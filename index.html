@@ -5,24 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="MAHROUG ERRAS BELKACEM – SIREP OASIS NEXUS TECH DZ">
 <meta name="description" content="SIREP OASIS NEXUS TECH DZ – منصة رقمية ذكية لإدارة الواحات الصحراوية – بلقاسم محروق الراس">
-<title>🦅 هدهد SIREP – واحة الشيخ آمود | NEXUS TECH DZ</title>
+<title>هدهد SIREP – واحة الشيخ آمود | NEXUS TECH DZ</title>
 <style>
 body{font-family:Arial;background:linear-gradient(45deg,#001f3f,#FFDC00);color:#fff;text-align:center;padding:20px;min-height:100vh}
-.header{font-size:2.5em;margin:20px 0;text-shadow:2px 2px 4px #000}
-.ayat{font-size:1.4em;color:#FFDC00;margin:20px 0;font-style:italic}
-.tasbih{font-size:3em;color:#FFD700;margin:20px 0;animation:pulse 1s infinite}
+.header{font-size:2em;margin:10px 0;text-shadow:2px 2px 4px #000}
+.hoopoe-img{width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid #FFDC00;box-shadow:0 0 20px rgba(255,220,0,0.6);margin:15px auto;display:block;animation:glow 2s ease-in-out infinite alternate}
+@keyframes glow{from{box-shadow:0 0 10px rgba(255,220,0,0.4)}to{box-shadow:0 0 30px rgba(255,220,0,0.9)}}
+.ayat{font-size:1.4em;color:#FFDC00;margin:15px 0;font-style:italic}
+.tasbih{font-size:2.8em;color:#FFD700;margin:15px 0;animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-.profit{font-size:2.2em;color:#00FF00;margin:20px 0;font-weight:bold}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin:30px 0}
+.profit{font-size:2.2em;color:#00FF00;margin:15px 0;font-weight:bold}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin:25px 0}
 .stat{background:rgba(255,255,255,0.2);padding:20px;border-radius:15px;backdrop-filter:blur(10px)}
 .btn{background:#FFDC00;color:#001f3f;padding:15px 30px;border:none;border-radius:30px;font-size:1.2em;cursor:pointer;margin:10px;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,0.3);transition:all 0.3s}
 .btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.4)}
-.bot-link{font-size:1.3em;color:#FFD700;text-decoration:none;margin:20px}
+.bot-link{font-size:1.3em;color:#FFD700;text-decoration:none;margin:20px;display:block}
 .footer{margin-top:40px;font-size:0.85em;color:#FFDC00;border-top:1px solid rgba(255,220,0,0.3);padding-top:15px}
+.img-credit{font-size:0.7em;color:rgba(255,255,255,0.5);margin-top:4px}
 </style>
 </head>
 <body>
-<div class="header">🦅 هدهد SIREP سليمان</div>
+
+<img class="hoopoe-img"
+  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Common_Hoopoe.jpg/320px-Common_Hoopoe.jpg"
+  alt="طائر الهدهد – SIREP OASIS NEXUS TECH DZ"
+  onerror="this.style.display='none';document.getElementById('hoopoe-emoji').style.display='block'">
+<div id="hoopoe-emoji" style="display:none;font-size:4em">🦅</div>
+<div class="img-credit">Hoopoe – Wikimedia Commons (CC BY-SA)</div>
+
+<div class="header">هدهد SIREP سليمان</div>
 <div class="ayat">"ألا تعلوا علي وأتوني مسلمين" 🕋</div>
 
 <div class="tasbih" id="tasbihCounter">سبحان الله <span id="count">0</span>/100</div>
@@ -39,15 +50,13 @@ body{font-family:Arial;background:linear-gradient(45deg,#001f3f,#FFDC00);color:#
 <button class="btn" onclick="tasbihClick()">🌟 سبحان الله +1</button>
 <button class="btn" onclick="resetTasbih()">🔄 إعادة تسبيح</button>
 
-<br>
 <a href="https://t.me/SIREP_Hudhud_bot" class="bot-link">🤖 هدهد Bot: /umra /siyakh</a>
-<br>
 <button class="btn">💳 بريدي موب</button>
 <button class="btn">🏜️ الواحة Live</button>
 
 <div class="footer">
   © 2026 <b>MAHROUG ERRAS BELKACEM</b> – SIREP OASIS NEXUS TECH DZ – جميع الحقوق محفوظة<br>
-  <a href="https://github.com/skacimo1985-star" style="color:#FFDC00">GitHub: skacimo1985-star</a>
+  <a href="https://github.com/skacimo1985-star" style="color:#FFDC00;">GitHub: skacimo1985-star</a>
 </div>
 
 <script>
