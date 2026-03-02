@@ -101,7 +101,7 @@
         /* Language Support */
         [lang-node] { display: none; }
         body.lang-ar [lang-node="ar"] { display: block; }
-        body.lang-en [lang-node="en"] { display: block; }
+        body.lang-en [lang-node="en"] { display: block; }   body.lang-fr [lang-node="fr"] { display: block; }   body.lang-ber [lang-node="ber"] { display: block; }   body.lang-ar [lang-node="ar"] { display: block; }   body.lang-fr [lang-node="fr"] { display: block; }   body.lang-ber [lang-node="ber"] { display: block; }   body.lang-ar [lang-node="ar"] { display: block; }
         
         /* Documents Section */   .docs-section { padding: 60px 5%; max-width: 1400px; margin: 0 auto; }   .grid-docs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-top: 2rem; }   .doc-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 28px; text-align: center; transition: 0.3s; position: relative; }   .doc-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212,175,55,0.15); }   .doc-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; }   .doc-badge { display: inline-block; background: var(--accent); color: #000; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; margin-bottom: 1rem; }   .doc-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; }   .doc-ref { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.8rem; background: rgba(0,255,136,0.08); padding: 6px 14px; border-radius: 8px; display: inline-block; }   .doc-card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1rem; }   .doc-meta { font-size: 0.8rem; color: var(--accent); font-weight: 600; }   .doc-meta i { margin-left: 5px; margin-right: 5px; }    /* Founder Section */
         .founder-section { padding: 60px 5%; display: flex; gap: 40px; align-items: center; max-width: 1200px; margin: 0 auto; background: rgba(255,255,255,0.02); border-radius: 30px; }
@@ -124,6 +124,10 @@
             <button onclick="setLang('en')" id="btn-en" lang-node="ar">EN</button>
             <button onclick="setLang('en')" class="" lang-node="en">English</button>
         </div>
+                    <button onclick="setLang('fr')" id="btn-fr" lang-node="ar">FR</button>
+                    <button onclick="setLang('fr')" lang-node="en">Français</button>
+                    <button onclick="setLang('ber')" id="btn-ber" lang-node="ar">ⵜⴰⵎⴰⵣⵉⵖⵜ</button>
+                    <button onclick="setLang('ber')" lang-node="en">Tamazight</button>
     </nav>
 
     <header>
@@ -244,7 +248,8 @@
                 <i class="fas fa-rocket"></i>
                 <h3 lang-node="ar">الوكالة الوطنية ANAE</h3>
                 <h3 lang-node="en">ANAE National Agency</h3>
-                <p lang-node="ar">الوكالة الوطنية لدعم تشغيل الشباب - دعم ريادة الأعمال</p>
+   https://via.placeholder.com/150            <p lang-node="ar">باحث خبير في تكنولوجيا الصحراء والأتمتة الصناعية في سونلغاز. يهدف مشروع SIREP OASIS لربط أصالة الواحات بأحدث تقنيات التحكم الرقمي وتعزيز الاستدامة في البيئة الصحراوية الجزائرية.</p>
+             <p lang-node="ar">الوكالة الوطنية لدعم تشغيل الشباب - دعم ريادة الأعمال</p>
                 <p lang-node="en">National Agency for Youth Employment Support - Entrepreneurship Support</p>
                         </div>
             
@@ -271,9 +276,7 @@
         
         const ctx = document.getElementById('sysChart').getContext('2d');
         let myChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Energy', 'Water', 'Logic'],
+
                 datasets: [{
                     data: [70, 140, 100],
                     backgroundColor: ['#00ff88', '#d4af37', '#1a2a1a'],
@@ -284,13 +287,17 @@
             options: { plugins: { legend: { display: false } } }
         });
         
-        function setLang(l) {
+function setLang(l) {
             currentLang = l;
             document.body.className = 'lang-' + l;
-            document.dir = l === 'ar' ? 'rtl' : 'ltr';
-            document.getElementById('btn-ar').className = l === 'ar' ? 'active' : '';
-            document.getElementById('btn-en').className = l === 'en' ? 'active' : '';
-        }
+            document.dir = l === 'ar' || l === 'ber' ? 'rtl' : 'ltr';
+            ['btn-ar','btn-en','btn-fr','btn-ber'].forEach(id => {
+              const el = document.getElementById(id);
+              if(el) el.className = '';
+            });
+            const map = {ar:'btn-ar',en:'btn-en',fr:'btn-fr',ber:'btn-ber'};
+            if(map[l] && document.getElementById(map[l])) document.getElementById(map[l]).className = 'active';
+          }
         
         function update() {
             const p = document.getElementById('in-pwr').value;
