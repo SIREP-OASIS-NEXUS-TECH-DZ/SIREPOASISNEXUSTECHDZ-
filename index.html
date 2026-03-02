@@ -3,115 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="MAHROUG ERRAS BELKACEM - SIREP OASIS NEXUS TECH DZ">
     <title>SIREP OASIS NEXUS TECH DZ | Official Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --green: #006233; --red: #d21034; --white: #ffffff; --black: #0b0f0b;
-            --accent: #ffd700; --glass: rgba(255, 255, 255, 0.1);
+            --bg: #0a0f0a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --accent: #d4af37;
+            --green: #00ff88;
+            --text: #e0e0e0;
         }
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, sans-serif; transition:0.3s ease; }
-        body { background: var(--black); color: var(--white); overflow-x: hidden; }
-        .lang-switch { position:fixed; top:20px; left:20px; z-index:2000; background:rgba(0,0,0,0.8); padding:5px; border-radius:30px; border:1px solid var(--green); display:flex; gap:5px; }
-        .lang-switch button { background:none; border:none; color:white; padding:8px 12px; cursor:pointer; font-weight:bold; border-radius:20px; font-size:12px; }
-        .lang-switch button.active { background:var(--green); color:white; }
-        nav { background:rgba(11,15,11,0.9); backdrop-filter:blur(10px); padding:15px 5%; display:flex; justify-content:space-between; align-items:center; position:fixed; width:100%; top:0; z-index:1000; border-bottom:2px solid var(--green); }
-        .logo-box { display:flex; align-items:center; gap:10px; }
-        .logo-img { width:45px; height:45px; border-radius:50%; border:2px solid var(--green); }
-        .nav-links a { color:white; text-decoration:none; margin:0 15px; font-weight:600; font-size:14px; }
-        header { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 10%; background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1547233225-399867086038?auto=format&fit=crop&w=1350&q=80') center/cover; position:relative; }
-        .hero-title { font-size:3.5rem; font-weight:900; margin-bottom:15px; }
-        .hero-subtitle { font-size:1.2rem; max-width:800px; color:#ccc; margin-bottom:30px; line-height:1.6; }
-        .tifinagh { font-size:1.5rem; color:var(--green); margin-bottom:10px; font-weight:bold; }
-        .live-dashboard { width:100%; padding:80px 10%; background:rgba(255,255,255,0.02); }
-        .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; }
-        .slot { background:var(--glass); padding:30px; border-radius:20px; border:1px solid rgba(255,255,255,0.1); text-align:center; position:relative; }
-        .slot i { font-size:2.5rem; color:var(--accent); margin-bottom:15px; }
-        .slot .value { font-size:2.2rem; font-weight:800; color:var(--green); margin-bottom:5px; }
-        .slot .label { font-size:0.9rem; color:#888; font-weight:600; text-transform:uppercase; }
-        .live-dot { position:absolute; top:15px; right:15px; width:10px; height:10px; background:#00ff00; border-radius:50%; animation:pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity:0.3; } 50% { opacity:1; } 100% { opacity:0.3; } }
-        .bio-section { padding:80px 10%; }
-        .bio-card { background:rgba(255,255,255,0.03); border-radius:30px; padding:50px; display:flex; gap:40px; align-items:center; border:1px solid rgba(255,255,255,0.05); }
-        .founder-img { width:200px; height:200px; border-radius:50%; border:5px solid var(--green); object-fit:cover; flex-shrink:0; }
-        .bio-text h2 { font-size:2rem; margin-bottom:20px; color:var(--accent); }
-        footer { background:#050805; padding:60px 10%; text-align:center; border-top:1px solid var(--green); }
-        [lang-node] { display:none; }
-        body.lang-ar [lang-node="ar"] { display:block; }
-        body.lang-en [lang-node="en"] { display:block; }
-        body.lang-fr [lang-node="fr"] { display:block; }
-        body.lang-amazigh [lang-node="amazigh"] { display:block; }
-        @media (max-width:768px) { .bio-card { flex-direction:column; text-align:center; } .hero-title { font-size:2rem; } }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+        
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(10, 15, 10, 0.8); backdrop-filter: blur(10px); z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+        .logo-box { display: flex; align-items: center; gap: 10px; }
+        .logo-img { width: 40px; border-radius: 50%; border: 2px solid var(--green); }
+        .lang-switch { display: flex; gap: 8px; }
+        .lang-switch button {
+            background: var(--glass); border: 1px solid rgba(255,255,255,0.1);
+            color: white; padding: 5px 12px; border-radius: 20px; cursor: pointer; transition: 0.3s;
+        }
+        .lang-switch button.active { background: var(--green); color: black; font-weight: bold; }
+
+        /* Hero */
+        header {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 10%; background: radial-gradient(circle at center, #1a2a1a 0%, #0a0f0a 100%);
+        }
+        .hero-title { font-size: 3.5rem; color: var(--green); margin-bottom: 20px; text-shadow: 0 0 20px rgba(0,255,136,0.3); }
+        .hero-subtitle { font-size: 1.2rem; color: #aaa; max-width: 800px; line-height: 1.6; }
+
+        /* Interactive Dashboard */
+        .dashboard-section { padding: 100px 5%; background: var(--bg); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--accent); margin-bottom: 10px; }
+        
+        .interactive-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+        .interactive-card {
+            background: var(--glass); border: 1px solid rgba(0, 255, 136, 0.1);
+            padding: 40px; border-radius: 25px; text-align: center; position: relative;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .interactive-card:hover { transform: translateY(-10px); border-color: var(--green); }
+        .card-icon { font-size: 3rem; color: var(--green); margin-bottom: 20px; }
+        
+        /* Input Styling */
+        .input-group { margin-top: 20px; text-align: right; }
+        .input-group label { display: block; font-size: 0.9rem; color: #888; margin-bottom: 10px; font-weight: 600; }
+        .interactive-input {
+            width: 100%; background: rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.05);
+            padding: 15px; border-radius: 12px; color: var(--green); font-size: 1.5rem;
+            font-weight: 800; text-align: center; outline: none; transition: 0.3s;
+        }
+        .interactive-input:focus { border-color: var(--green); box-shadow: 0 0 15px rgba(0,255,136,0.2); }
+        .unit { font-size: 0.8rem; color: #666; margin-top: 5px; display: block; }
+
+        /* Calculation Result */
+        .roi-card {
+            grid-column: 1 / -1; background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(212,175,55,0.05) 100%);
+            border: 1px solid var(--accent); padding: 50px; text-align: center;
+        }
+        .result-value { font-size: 3.5rem; font-weight: 900; color: var(--accent); margin: 15px 0; }
+
+        /* Founder Section */
+        .bio-section { padding: 100px 10%; }
+        .bio-card {
+            background: var(--glass); border-radius: 40px; padding: 60px;
+            display: flex; gap: 50px; align-items: center; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .founder-img { width: 220px; height: 220px; border-radius: 50%; border: 4px solid var(--green); object-fit: cover; }
+        .bio-text h2 { color: var(--accent); margin-bottom: 20px; }
+        .bio-text p { line-height: 1.8; color: #ccc; }
+
+        footer { padding: 50px; text-align: center; border-top: 1px solid var(--green); color: #666; }
+
+        /* Animations */
+        .live-pulse {
+            width: 12px; height: 12px; background: #00ff00; border-radius: 50%;
+            position: absolute; top: 20px; right: 20px; animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 0.2; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.1); } 100% { opacity: 0.2; transform: scale(0.8); } }
+
+        @media (max-width: 768px) {
+            .bio-card { flex-direction: column; text-align: center; padding: 40px 20px; }
+            .hero-title { font-size: 2.2rem; }
+        }
+
+        [lang-node] { display: none; }
+        body.lang-ar [lang-node="ar"] { display: block; }
+        body.lang-en [lang-node="en"] { display: block; }
+        body.lang-fr [lang-node="fr"] { display: block; }
     </style>
 </head>
 <body class="lang-ar">
-    <div class="lang-switch">
-        <button onclick="setLang('ar')" id="btn-ar" class="active">عربي</button>
-        <button onclick="setLang('en')" id="btn-en">EN</button>
-        <button onclick="setLang('fr')" id="btn-fr">FR</button>
-        <button onclick="setLang('amazigh')" id="btn-amazigh">ⵜⴰⵎⴰⵣⵉⵖⵜ</button>
-    </div>
+
     <nav>
-        <div class="logo-box"><img src="https://github.com/skacimo1985-star.png" alt="Logo" class="logo-img"><span style="font-weight:900; letter-spacing:1px;">SIREP OASIS NEXUS</span></div>
-        <div class="nav-links">
-            <a href="#dashboard" lang-node="ar">المنصة</a><a href="#dashboard" lang-node="en">Dashboard</a><a href="#dashboard" lang-node="fr">Plateforme</a><a href="#dashboard" lang-node="amazigh">ⵜⴰⵙⵏⵓⵔⴰⵢⵜ</a>
-            <a href="#about" lang-node="ar">المؤسس</a><a href="#about" lang-node="en">Founder</a><a href="#about" lang-node="fr">Fondateur</a><a href="#about" lang-node="amazigh">ⴰⵎⵣⵡⴰⵔ</a>
+        <div class="logo-box">
+            <img src="https://github.com/skacimo1985-star.png" alt="Logo" class="logo-img">
+            <span style="font-weight: 900;">SIREP OASIS</span>
+        </div>
+        <div class="lang-switch">
+            <button onclick="setLang('ar')" id="btn-ar" class="active">عربي</button>
+            <button onclick="setLang('en')" id="btn-en">EN</button>
+            <button onclick="setLang('fr')" id="btn-fr">FR</button>
         </div>
     </nav>
+
     <header>
-        <div class="tifinagh" lang-node="ar">ⴰⵙⴼⴰⵔ ⵏ ⵜⵓⴳⴷⵓⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ</div>
         <h1 class="hero-title" lang-node="ar">محروق الراس بلقاسم</h1>
         <h1 class="hero-title" lang-node="en">MAHROUG ERRAS BELKACEM</h1>
-        <h1 class="hero-title" lang-node="fr">MAHROUG ERRAS BELKACEM</h1>
-        <h1 class="hero-title" lang-node="amazigh">ⵎⴰⵃⵔⵓⴳ ⵄⴰⵕⵕⴰⵙ ⴱⴻⵍⵇⴰⵙⴻⵎ</h1>
-        <p class="hero-subtitle" lang-node="ar">خبير في أنظمة التحكم الذكي والأتمتة (SCADA) ومبتكر مشروع SIREP OASIS الحاصل على براءة اختراع قيد الدراسة لتطوير الواحات الذكية في الجزائر.</p>
-        <p class="hero-subtitle" lang-node="en">Expert in Smart Control Systems & SCADA, and Innovator of the SIREP OASIS project with a Patent Under Study for developing smart oases in Algeria.</p>
-        <p class="hero-subtitle" lang-node="fr">Expert en systèmes de contrôle intelligents & SCADA, Innovateur du projet SIREP OASIS détenteur d'un brevet en cours d’étude pour le développement des oasis intelligentes en Algérie.</p>
-        <p class="hero-subtitle" lang-node="amazigh">ⴰⵎⵓⵙⵏⴰⵡ ⴳ ⵉⵙⴼⴰⵔⵏ ⵏ ⵜⵓⴳⴷⵓⵜ ⵜⴰⵎⵓⵙⵏⴰⵡⵜ ⴷ SCADA, ⴷ ⴰⵎⵣⵡⴰⵔ ⵏ ⵓⵙⴼⴰⵔ SIREP OASIS ⵉⵙⵄⴰⵏ ⴰⴼⵉⵍ ⵏ ⵓⵎⵓⵙⵏⴰⵡ ⴳ ⴷⵣⴰⵢⴻⵔ.</p>
-        <div style="display:flex; gap:15px; margin-top:20px;"><a href="#dashboard" class="slot" style="padding:12px 30px; border-radius:30px; text-decoration:none; color:white; background:var(--green); font-weight:bold;"><span lang-node="ar">لوحة التحكم</span><span lang-node="en">Go to Live</span><span lang-node="fr">Accéder au Live</span><span lang-node="amazigh">ⴰⴽⵛⵛⵓⵎ</span></a></div>
+        <p class="hero-subtitle" lang-node="ar">خبير الأتمتة الذكية ومبتكر مشروع SIREP OASIS لتطوير الواحات المستدامة في الجزائر.</p>
+        <p class="hero-subtitle" lang-node="en">Smart Automation Expert & Innovator of SIREP OASIS for Sustainable Oases in Algeria.</p>
     </header>
-    <section id="dashboard" class="live-dashboard">
-        <div style="text-align:center; margin-bottom:50px;"><h2 lang-node="ar">المنصة الحية للبيانات</h2><h2 lang-node="en">Live Operating Dashboard</h2><h2 lang-node="fr">Tableau de Bord Opérationnel</h2><h2 lang-node="amazigh">ⵜⴰⵙⵏⵓⵔⴰⵢⵜ ⵏ ⵉⵙⴼⴽⴰ</h2></div>
-        <div class="grid">
-            <div class="slot"><div class="live-dot"></div><i class="fas fa-solar-panel"></i><div class="value" id="val-pwr">70.4</div><div class="label" lang-node="ar">الطاقة الشمسية CSP</div><div class="label" lang-node="en">CSP Power Production</div><div class="label" lang-node="fr">Production CSP</div><div class="label" lang-node="amazigh">ⵜⴰⴼⵓⴽⵜ (CSP)</div><div style="font-size:12px; color:#666;">kW/h</div></div>
-            <div class="slot"><div class="live-dot"></div><i class="fas fa-water"></i><div class="value" id="val-flow">142</div><div class="label" lang-node="ar">تدفق الري الذكي</div><div class="label" lang-node="en">Smart Irrigation Flow</div><div class="label" lang-node="fr">Flux d'irrigation</div><div class="label" lang-node="amazigh">ⴰⵎⴰⵏ ⵏ ⵡⴰⵃⴰ</div><div style="font-size:12px; color:#666;">L/sec</div></div>
-            <div class="slot"><div class="live-dot"></div><i class="fas fa-chart-line"></i><div class="value" id="val-profit">1.62</div><div class="label" lang-node="ar">العائد المادي المتوقع</div><div class="label" lang-node="en">Expected Monthly ROI</div><div class="label" lang-node="fr">Rendement Mensuel</div><div class="label" lang-node="amazigh">ⴰⴷⵔⵉⵎ</div><div style="font-size:12px; color:#666;">Million DZD</div></div>
-            <div class="slot"><i class="fas fa-shield-alt"></i><div class="value">142965</div><div class="label" lang-node="ar">براءة الاختراع INAPI</div><div class="label" lang-node="en">INAPI Patent Number</div><div class="label" lang-node="fr">Brevet d'Invention</div><div class="label" lang-node="amazigh">ⵜⴰⵖⵍⵉⵙⵜ (INAPI)</div></div>
+
+    <section id="dashboard" class="dashboard-section">
+        <div class="section-header">
+            <h2 lang-node="ar">المحاكي التفاعلي للبيانات</h2>
+            <h2 lang-node="en">Interactive Data Simulator</h2>
+            <p style="color: #666;">قم بتعديل القيم الحية لمشاهدة تأثيرها على العائد الاقتصادي</p>
+        </div>
+
+        <div class="interactive-grid">
+            <!-- Energy Input -->
+            <div class="interactive-card">
+                <div class="live-pulse"></div>
+                <i class="fas fa-solar-panel card-icon"></i>
+                <div class="input-group">
+                    <label lang-node="ar">إنتاجية الطاقة الشمسية (CSP)</label>
+                    <label lang-node="en">CSP Power Production</label>
+                    <input type="number" id="in-pwr" class="interactive-input" value="70.4" step="0.1" oninput="calculate()">
+                    <span class="unit">kW/h</span>
+                </div>
+            </div>
+
+            <!-- Water Input -->
+            <div class="interactive-card">
+                <div class="live-pulse"></div>
+                <i class="fas fa-water card-icon"></i>
+                <div class="input-group">
+                    <label lang-node="ar">تدفق الري الذكي</label>
+                    <label lang-node="en">Smart Irrigation Flow</label>
+                    <input type="number" id="in-flow" class="interactive-input" value="142" step="1" oninput="calculate()">
+                    <span class="unit">L/sec</span>
+                </div>
+            </div>
+
+            <!-- ROI Calculation -->
+            <div class="interactive-card roi-card">
+                <i class="fas fa-chart-line card-icon" style="color: var(--accent);"></i>
+                <h3 lang-node="ar">العائد المادي الشهري المتوقع</h3>
+                <h3 lang-node="en">Expected Monthly ROI</h3>
+                <div class="result-value" id="res-roi">1.62</div>
+                <div style="color: var(--accent); font-weight: bold;">Million DZD</div>
+            </div>
+
+            <!-- Patent Info -->
+            <div class="interactive-card">
+                <i class="fas fa-shield-alt card-icon"></i>
+                <h3 lang-node="ar">براءة الاختراع INAPI</h3>
+                <h3 lang-node="en">INAPI Patent</h3>
+                <div style="font-size: 1.5rem; font-weight: bold; margin-top: 15px;">142965</div>
+            </div>
         </div>
     </section>
+
     <section id="about" class="bio-section">
         <div class="bio-card">
             <img src="https://github.com/skacimo1985-star.png" alt="Founder" class="founder-img">
             <div class="bio-text">
-                <h2 lang-node="ar">نبذة عن المؤسس</h2><h2 lang-node="en">About the Founder</h2><h2 lang-node="fr">À propos du Fondateur</h2><h2 lang-node="amazigh">ⴰⵎⵣⵡⴰⵔ</h2>
-                <p lang-node="ar">باحث خبير في تكنولوجيا الصحراء والأتمتة الصناعية. بخبرة مهنية في سونلغاز، أسس بلقاسم مشروع SIREP OASIS ليكون جسراً تكنولوجياً يربط بين أصالة الواحات وأحدث تقنيات التحكم الرقمي والإنتاج الطاقوي المستدام.</p>
-                <p lang-node="en">Expert researcher in desert technology and industrial automation. With professional experience at Sonelgaz, Belkacem founded SIREP OASIS to be a technological bridge connecting oasis authenticity with the latest digital control and sustainable energy production techniques.</p>
-                <p lang-node="fr">Chercheur expert en technologie du désert et automatisation industrielle. Fort d'une expérience professionnelle à Sonelgaz, Belkacem a fondé SIREP OASIS pour être un pont technologique reliant l'authenticité des oasis aux dernières techniques de contrôle numérique et de production d'énergie durable.</p>
-                <p lang-node="amazigh">ⴰⵎⵓⵙⵏⴰⵡ ⴳ ⵜⴻⴽⵏⵓⵍⵓⵊⵉⵜ ⵏ ⵜⵏⵣⵔⵓⴼⵜ. ⵉⵙⵙⵏⵜⴰ ⵜⴰⵙⵏⵓⵔⴰⵢⵜ SIREP OASIS ⴰⴽⴽⵏ ⴰⴷ ⵉⵙⵙⵎⵍⵉⵍ ⵜⴰⴼⵓⴽⵜ ⴷ ⵡⴰⵎⴰⵏ ⵙ ⵜⴻⴽⵏⵓⵍⵓⵊⵉⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ.</p>
+                <h2 lang-node="ar">عن المؤسس</h2>
+                <h2 lang-node="en">About the Founder</h2>
+                <p lang-node="ar">باحث خبير في تكنولوجيا الصحراء والأتمتة الصناعية في سونلغاز. يهدف مشروع SIREP OASIS لربط أصالة الواحات بأحدث تقنيات التحكم الرقمي.</p>
+                <p lang-node="en">Expert researcher in desert technology and industrial automation at Sonelgaz. SIREP OASIS aims to bridge tradition with digital control.</p>
             </div>
         </div>
     </section>
+
     <footer>
-        <img src="https://github.com/skacimo1985-star.png" alt="Logo" class="footer-logo">
-        <p>© 2026 SIREP OASIS NEXUS TECH DZ</p>
-        <p lang-node="ar">مشروع وطني جزائري مبتكر لضمان السيادة الطاقوية والغذائية في الجنوب.</p>
-        <p lang-node="en">Innovative Algerian national project for energy and food sovereignty in the South.</p>
-        <p lang-node="fr">Projet national algérien innovant pour la souveraineté énergétique et alimentaire au Sud.</p>
-        <p lang-node="amazigh">ⴰⵙⴼⴰⵔ ⵏ ⴷⵣⴰⵢⴻⵔ ⵉ ⵜⴻⴳⴷⵓⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ.</p>
+        <p>© 2026 SIREP OASIS NEXUS TECH DZ - ALGERIA</p>
     </footer>
+
     <script>
         function setLang(lang) {
             document.body.className = 'lang-' + lang;
             document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
             document.getElementById('btn-' + lang).classList.add('active');
-            document.documentElement.dir = (lang === 'ar' || lang === 'amazigh') ? 'rtl' : 'ltr';
         }
-        setInterval(() => {
-            document.getElementById('val-pwr').innerText = (70 + Math.random()).toFixed(1);
-            document.getElementById('val-flow').innerText = (140 + Math.floor(Math.random()*10));
-            document.getElementById('val-profit').innerText = (1.6 + Math.random()*0.1).toFixed(2);
-        }, 3000);
+
+        function calculate() {
+            const pwr = parseFloat(document.getElementById('in-pwr').value) || 0;
+            const flow = parseFloat(document.getElementById('in-flow').value) || 0;
+            
+            // Simple logic for simulation: ROI increases with power and water efficiency
+            const roi = (pwr * 0.015 + flow * 0.004).toFixed(2);
+            document.getElementById('res-roi').innerText = roi;
+        }
+        
+        // Initial Calculation
+        calculate();
     </script>
 </body>
 </html>
