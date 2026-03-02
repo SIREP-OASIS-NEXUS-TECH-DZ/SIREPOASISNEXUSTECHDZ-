@@ -113,7 +113,20 @@
     </style>
 </head>
 <body class="lang-ar">
-    <nav>
+    footer { background: linear-gradient(135deg, #0a1a0a 0%, #1a2a1a 50%, #0a1a0a 100%); padding: 60px 5% 30px; border-top: 3px solid var(--primary); position: relative; overflow: hidden; }
+  footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 100%; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0,255,136,0.03) 20px, rgba(0,255,136,0.03) 40px); pointer-events: none; }
+  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; position: relative; z-index: 1; margin-bottom: 40px; }
+  .footer-col h3 { color: var(--accent); font-size: 1.2rem; margin-bottom: 20px; border-bottom: 2px solid rgba(212,175,55,0.3); padding-bottom: 10px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 12px; }
+  .footer-col ul li a { color: var(--text-dim); text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+  .footer-col ul li a:hover { color: var(--primary); padding-right: 5px; }
+  .footer-col ul li a i { font-size: 0.85rem; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; color: #666; position: relative; z-index: 1; }
+  .footer-bottom p { margin-bottom: 10px; }
+  .footer-legal-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 15px; }
+  .footer-legal-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+  .footer-legal-links a:hover { color: var(--accent); }
         <a href="#" class="logo-box">
             <img src="https://skacimo1985-star.github.io/sirep-amoud/LOGOSIREP_OASIS.png" class="logo-img" alt="Logo">
             <span class="logo-text">SIREP OASIS</span>
@@ -271,9 +284,44 @@
         <p>© 2025 SIREP OASIS NEXUS TECH DZ - ALGERIA | Powered by NEXUS TECH DZ</p>
     </footer>
 
-    <script>
-        let currentLang = 'ar';
-        
+    <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3 lang-node="ar">عن الشركة</h3><h3 lang-node="en">About</h3><h3 lang-node="fr">À propos</h3><h3 lang-node="ber">ⵔⴼ ⵜⵎⴰⵔⴰⵏⵜ</h3>
+        <ul>
+          <li><a href="#"><i class="fas fa-info-circle"></i><span lang-node="ar">من نحن</span><span lang-node="en">Who we are</span><span lang-node="fr">Qui sommes-nous</span><span lang-node="ber">ⵎⴰⵏⵉⴼ ⵏⵏⵖ</span></a></li>
+          <li><a href="#"><i class="fas fa-history"></i><span lang-node="ar">تاريخنا</span><span lang-node="en">Our History</span><span lang-node="fr">Notre histoire</span><span lang-node="ber">ⴰⵎⵣⵉ⵮ⵏⵏⵖ</span></a></li>
+          <li><a href="#"><i class="fas fa-certificate"></i><span lang-node="ar">براءاتنا</span><span lang-node="en">Patents</span><span lang-node="fr">Brevets</span><span lang-node="ber">ⵜⵉⵘⴰⴼⵉⵏ</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 lang-node="ar">القانونية</h3><h3 lang-node="en">Legal</h3><h3 lang-node="fr">Légal</h3><h3 lang-node="ber">ⴰⵙⵖⴰⵊⵓ</h3>
+        <ul>
+          <li><a href="#"><i class="fas fa-file-contract"></i><span lang-node="ar">الشروط والأحكام</span><span lang-node="en">Terms & Conditions</span><span lang-node="fr">Conditions générales</span><span lang-node="ber">ⵜⵉⵍⵉⵡⵉⵏ</span></a></li>
+          <li><a href="#"><i class="fas fa-user-shield"></i><span lang-node="ar">سياسة الخصوصية</span><span lang-node="en">Privacy Policy</span><span lang-node="fr">Politique de confidentialité</span><span lang-node="ber">ⵜⴰⵙⵔⴰⵍ ⵜⴰⵙⵖⵯⵉⵜ</span></a></li>
+          <li><a href="#"><i class="fas fa-cookie-bite"></i><span lang-node="ar">سياسة ملفات الارتباط</span><span lang-node="en">Cookies Policy</span><span lang-node="fr">Politique des cookies</span><span lang-node="ber">ⵜⴰⵙⵔⴰⵍ cookies</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 lang-node="ar">الاتصال</h3><h3 lang-node="en">Contact</h3><h3 lang-node="fr">Contact</h3><h3 lang-node="ber">ⴰⵏⵎⵙⴰⵡⴰⵍ</h3>
+        <ul>
+          <li><a href="mailto:kacimo2000@gmail.com"><i class="fas fa-envelope"></i>kacimo2000@gmail.com</a></li>
+          <li><a href="tel:+213556640211"><i class="fas fa-phone"></i>+213 556 64 02 11</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i><span lang-node="ar">لغواط – الجزائر</span><span lang-node="en">Laghouat, Algeria</span><span lang-node="fr">Laghouat, Algérie</span><span lang-node="ber">Laghouat, Dzayer</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p lang-node="ar">© 2026 SIREP OASIS NEXUS TECH DZ | جميع الحقوق محفوظة | NIF: 18503010006316000380</p>
+      <p lang-node="en">© 2026 SIREP OASIS NEXUS TECH DZ | All Rights Reserved | NIF: 18503010006316000380</p>
+      <p lang-node="fr">© 2026 SIREP OASIS NEXUS TECH DZ | Tous droits réservés | NIF: 18503010006316000380</p>
+      <p lang-node="ber">© 2026 SIREP OASIS NEXUS TECH DZ | ⴰⴽⵍ ⵉⵣⵔⵔⵉⴼⵏ | NIF: 18503010006316000380</p>
+      <p lang-node="ar" style="font-size:0.8rem;margin-top:10px;">مسجلة قانونياً بموجب القانون 22-23 المؤرخ 18/07/2022</p>
+      <p lang-node="en" style="font-size:0.8rem;margin-top:10px;">Legally registered under Law 22-23 dated 18/07/2022</p>
+      <p lang-node="fr" style="font-size:0.8rem;margin-top:10px;">Enregistrée légalement en vertu de la loi 22-23 du 18/07/2022</p>
+      <p lang-node="ber" style="font-size:0.8rem;margin-top:10px;">Ittusxel s usliɣ s ⴰⵙⵖⴰⵊⵓ 22-23 (18/07/2022)</p>
+    </div>
+  </footer>
         const ctx = document.getElementById('sysChart').getContext('2d');
         let myChart = new Chart(ctx, {
 
