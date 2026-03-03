@@ -1,388 +1,213 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIREP OASIS NEXUS TECH DZ | Official Enterprise Platform</title>
+    <title>SIREP LIVE | Smart Oasis Nexus Tech DZ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         :root {
-            --bg: #0a0f0a;
             --primary: #00ff88;
-            --primary-dark: #00cc6a;
-            --accent: #d4af37;
-            --bg-deep: #050805;
-                --card-bg: #1a2332;
-                --hover-bg: #243447;
-    --success: #10b981;
-    --warning: #f59e0b;
-    --info: #3b82f6;
-            --bg-card: rgba(255, 255, 255, 0.03);
-            --text-main: #e0e0e0;
-            --text-dim: #888;
+            --secondary: #d4af37;
+            --bg: #050805;
+            --card-bg: rgba(26, 35, 50, 0.7);
+            --text: #e0e0e0;
             --danger: #ff4444;
-            --border: rgba(0, 255, 136, 0.15);
+            --accent-glow: rgba(0, 255, 136, 0.3);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+
+        /* Navbar */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 8, 5, 0.9); backdrop-filter: blur(15px);
+            z-index: 2000; border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 900; color: var(--primary); font-size: 1.4rem; }
+        .logo img { width: 45px; filter: drop-shadow(0 0 10px var(--primary)); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; background: radial-gradient(circle at center, #102010 0%, var(--bg) 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero-bg-anim {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.2;
+            background-image: linear-gradient(var(--primary) 1px, transparent 1px), linear-gradient(90deg, var(--primary) 1px, transparent 1px);
+            background-size: 50px 50px; transform: perspective(500px) rotateX(60deg);
+        }
+        .hero-content { z-index: 10; padding: 0 5%; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); color: var(--primary); text-transform: uppercase; letter-spacing: 5px; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 40px; color: #aaa; }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        
-        body { background: var(--bg); color: var(--text-main); overflow-x: hidden; }
-        
-        nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(10, 15, 10, 0.8); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border); }
-        
-        .logo-box { display: flex; align-items: center; gap: 10px; }
-        .logo-img { width: 40px; border-radius: 50%; border: 2px solid var(--primary); }
-        
-        .lang-switch { display: flex; gap: 8px; }
-        .lang-switch button { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 5px 12px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
-        .lang-switch button.active { background: var(--primary); color: black; font-weight: bold; }
-        
-        header { padding: 120px 10% 60px; text-align: center; background: radial-gradient(circle at center, #1a2a1a 0%, var(--bg) 100%); }
-        .hero-title { font-size: 3rem; color: var(--primary); margin-bottom: 10px; }
-        .hero-subtitle { color: #aaa; max-width: 800px; margin: 0 auto; line-height: 1.6; }
-        
-        /* Controls */
-        .scada-input { margin-top: 1.5rem; }
-        .label-val { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; }
-                .hero-actions { display: flex; gap: 15px; justify-content: center; margin-top: 30px; }
-        .btn { padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: 700; transition: 0.3s; display: inline-block; }
-        .btn-primary { background: var(--primary); color: #000; border: 2px solid var(--primary); }
-        .btn-primary:hover { background: var(--primary-dark); transform: scale(1.05); }
-        .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
-        .btn-outline:hover { background: var(--primary); color: #000; }
-    .btn-primary { background: linear-gradient(135deg, var(--success), var(--accent)); color: #000; border: none; padding: 14px 32px; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); transition: all 0.3s ease; }        .label-val b { color: var(--primary); font-size: 1.1rem; }
-        input[type="range"] { width: 100%; height: 6px; background: #1a2a1a; border-radius: 10px; appearance: none; outline: none; }
-        input[type="range"]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; background: var(--primary); border-radius: 50%; cursor: pointer; }
-        
-        /* HMI Elements */
-        .hmi-display { display: flex; justify-content: space-around; padding: 1.5rem 0; background: rgba(0,0,0,0.3); border-radius: 12px; margin-top: 1rem; }
-        .hmi-unit { text-align: center; }
-        .hmi-led { width: 30px; height: 30px; border-radius: 50%; background: #222; margin: 0 auto 10px; transition: 0.3s; }
-        .hmi-led.on { background: var(--primary); box-shadow: 0 0 15px var(--primary); }
-        .hmi-led.alarm { background: var(--danger); box-shadow: 0 0 15px var(--danger); animation: blink 1s infinite; }
-        @keyframes blink { 0%, 50% { opacity: 1; } 50.1%, 100% { opacity: 0.3; } }
-        .hmi-label { font-size: 0.75rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; }
-        
-        /* Progress Bars */
-        .progress-group { margin-top: 1.5rem; }
-        .pg-label { margin-bottom: 8px; font-size: 0.9rem; font-weight: 600; }
-        .pg-bg { height: 12px; background: #1a2a1a; border-radius: 10px; overflow: hidden; position: relative; }
-        .pg-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: 0.5s; border-radius: 10px; }
-        
-        /* Dashboard Layout */
-        .dashboard { padding: 60px 5%; max-width: 1400px; margin: 0 auto; }
-        .section-label { font-size: 1.3rem; font-weight: 700; margin-bottom: 2rem; text-align: center; color: var(--accent); }
-        
-        .grid-scada { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
-        .scada-card { background: var(--bg-card); border: 1px solid var(--border); padding: 30px; border-radius: 20px; position: relative; transition: 0.3s; }
-        .scada-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-        .card-header i { font-size: 1.5rem; color: var(--accent); }
-        .mode-status { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--primary); }
-        .pulse { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: blink 1.5s infinite; }
-        
-        /* System Stats Grid */
-        .grid-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 2rem; padding: 2rem; background: rgba(0, 255, 136, 0.03); border-radius: 20px; border: 1px solid var(--border); }
-        .stat-box { text-align: center; }
-        .stat-val { font-size: 2.5rem; font-weight: 900; color: var(--primary); }
-        .stat-label { font-size: 0.9rem; color: var(--text-dim); margin-top: 5px; text-transform: uppercase; }
-        
-        /* Portals Grid NEW */
-        .portals-section { padding: 60px 5%; max-width: 1400px; margin: 0 auto; background: rgba(0,0,0,0.2); }
-        .grid-portals { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .portal-card { background: var(--bg-card); padding: 2rem; border-radius: 16px; border: 1px solid var(--border); text-align: center; transition: 0.3s; text-decoration: none; color: var(--text-main); display: block; position: relative; overflow: hidden; }
-        .portal-card:hover { border-color: var(--primary); transform: translateY(-8px) scale(1.02); background: rgba(0, 255, 136, 0.05); box-shadow: 0 15px 40px rgba(0, 255, 136, 0.2); }
-        .portal-card i { font-size: 3rem; color: var(--primary); margin-bottom: 1.5rem; display: block; }
-        .portal-card h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: var(--text-main); font-weight: 700; }
-    .portal-card { background: var(--card-bg); padding: 2rem; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.2); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; }        .portal-badge { position: absolute; top: 10px; right: 10px; background: var(--accent); color: #000; padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; }
-            .portal-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(16, 185, 129, 0.2); border-color: var(--success); }
-        
-        /* Chart Canvas */
-        .chart-container { position: relative; height: 250px; margin-top: 1rem; }
-        
-        /* Language Support */
+        /* Glass Cards */
+        .glass-card {
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px; backdrop-filter: blur(10px); padding: 30px;
+            transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .glass-card:hover { border-color: var(--primary); transform: translateY(-10px); }
+
+        /* SCADA Grid */
+        .scada-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; padding: 50px 5%; margin-top: -100px; z-index: 100; position: relative;
+        }
+
+        /* Live Indicators */
+        .status-badge {
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(0,255,136,0.1);
+            color: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 800;
+        }
+        .pulse { width: 10px; height: 10px; background: var(--primary); border-radius: 50%; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+
+        /* Infographics Section */
+        .nexus-section { padding: 100px 5%; text-align: center; }
+        .nexus-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px; margin-top: 60px;
+        }
+        .nexus-item i { font-size: 4rem; color: var(--secondary); margin-bottom: 20px; }
+        .nexus-item h3 { color: var(--primary); margin-bottom: 10px; }
+
+        /* Legal Badges */
+        .legal-footer { padding: 40px 5%; background: #000; border-top: 2px solid var(--primary); text-align: center; }
+        .patent-badge {
+            display: inline-block; border: 2px solid var(--secondary); color: var(--secondary);
+            padding: 10px 25px; border-radius: 50px; font-weight: 900; margin-bottom: 20px;
+        }
+
+        /* Charts */
+        .chart-box { height: 300px; width: 100%; margin-top: 20px; }
+
+        /* Buttons */
+        .btn-sirep {
+            padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 900;
+            display: inline-block; transition: 0.3s; cursor: pointer; border: none;
+        }
+        .btn-glow { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
+        .btn-glow:hover { transform: scale(1.1); box-shadow: 0 0 40px var(--primary); }
+
         [lang-node] { display: none; }
-        body.lang-ar [lang-node="ar"] { display: block; }
-        body.lang-en [lang-node="en"] { display: block; }   body.lang-fr [lang-node="fr"] { display: block; }   body.lang-ber [lang-node="ber"] { display: block; }   body.lang-ar [lang-node="ar"] { display: block; }   body.lang-fr [lang-node="fr"] { display: block; }   body.lang-ber [lang-node="ber"] { display: block; }   body.lang-ar [lang-node="ar"] { display: block; }
-        
-        /* Documents Section */   .docs-section { padding: 60px 5%; max-width: 1400px; margin: 0 auto; }   .grid-docs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-top: 2rem; }   .doc-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 28px; text-align: center; transition: 0.3s; position: relative; }   .doc-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212,175,55,0.15); }   .doc-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; }   .doc-badge { display: inline-block; background: var(--accent); color: #000; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; margin-bottom: 1rem; }   .doc-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; }   .doc-ref { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.8rem; background: rgba(0,255,136,0.08); padding: 6px 14px; border-radius: 8px; display: inline-block; }   .doc-card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1rem; }   .doc-meta { font-size: 0.8rem; color: var(--accent); font-weight: 600; }   .doc-meta i { margin-left: 5px; margin-right: 5px; }    /* Founder Section */
-        .founder-section { padding: 60px 5%; display: flex; gap: 40px; align-items: center; max-width: 1200px; margin: 0 auto; background: rgba(255,255,255,0.02); border-radius: 30px; }
-        .founder-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; }
-        .founder-content h2 { color: var(--accent); margin-bottom: 1rem; }
-        .founder-content p { line-height: 1.8; color: var(--text-dim); }
-        
-  
-  footer { background: linear-gradient(135deg, #0a1a0a 0%, #1a2a1a 50%, #0a1a0a 100%); padding: 60px 5% 30px; border-top: 3px solid var(--primary); position: relative; overflow: hidden; }
-  footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 100%; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0,255,136,0.03) 20px, rgba(0,255,136,0.03) 40px); pointer-events: none; }
-  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; position: relative; z-index: 1; margin-bottom: 40px; }
-  .footer-col h3 { color: var(--accent); font-size: 1.2rem; margin-bottom: 20px; border-bottom: 2px solid rgba(212,175,55,0.3); padding-bottom: 10px; }
-  .footer-col ul { list-style: none; }
-  .footer-col ul li { margin-bottom: 12px; }
-  .footer-col ul li a { color: var(--text-dim); text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
-  .footer-col ul li a:hover { color: var(--primary); padding-right: 5px; }
-  .footer-col ul li a i { font-size: 0.85rem; }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; color: #666; position: relative; z-index: 1; }
-  .footer-bottom p { margin-bottom: 10px; }
-  .footer-legal-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 15px; }
-  .footer-legal-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-  .footer-legal-links a:hover { color: var(--accent); }
+        .lang-ar [lang-node="ar"] { display: block; }
+        .lang-en [lang-node="en"] { display: block; }
     </style>
 </head>
 <body class="lang-ar">
 
-
-
-        <a href="#" class="logo-box">
-            <img src="https://skacimo1985-star.github.io/sirep-amoud/LOGOSIREP_OASIS.png" class="logo-img" alt="Logo">
-            <span class="logo-text">SIREP OASIS</span>
-        </a>
-      
-        <div class="lang-switch">
-            <button onclick="setLang('ar')" class="active" id="btn-ar" lang-node="ar">عربي</button>
-            <button onclick="setLang('ar')" lang-node="en">AR</button>
-            <button onclick="setLang('en')" id="btn-en" lang-node="ar">EN</button>
-            <button onclick="setLang('en')" class="" lang-node="en">English</button>
-        </div>
-                    <button onclick="setLang('fr')" id="btn-fr" lang-node="ar">FR</button>
-                    <button onclick="setLang('fr')" lang-node="en">Français</button>
-                    <button onclick="setLang('ber')" id="btn-ber" lang-node="ar">ⵜⴰⵎⴰⵣⵉⵖⵜ</button>
-                    <button onclick="setLang('ber')" lang-node="en">Tamazight</button>
-    </nav>
-
-    <header>
-        <div class="hero-content">
-            <div class="badge-enterprise"><i class="fas fa-microchip"></i> <span lang-node="ar">صناعي تكنولوجي متقدم</span><span lang-node="en">Advanced Industrial Tech</span></div>
-            <h1 class="hero-title" lang-node="ar">محروق الراس بلقاسم<br>مبتكر مشروع SIREP OASIS</h1>
-            <h1 class="hero-title" lang-node="en">MAHROUG ERRAS BELKACEM<br>Innovator of SIREP OASIS</h1>
-            <p class="hero-desc" lang-node="ar">تكنولوجيا الصحراوية المتجددة بنظام تكنولوجيا NEXUS TECH DZ تكامل الحل الذكي الشامل في الحل الابتكاري المستقل لإدارة اليوم والطاقة في البيئة الصحراوية الجزائرية باستخدام تكنولوجيا CSP في الطاقة الشمسية المركزة.</p>
-            <p class="hero-desc" lang-node="en">Integrated enterprise solution for intelligent water and energy management in Algerian desert environments using CSP Concentrated Solar Power technology.</p>
-            <div class="hero-actions">
-                <a href="#dashboard" class="btn btn-primary" lang-node="ar">تشغيل لوحة التحكم</a><a href="#dashboard" class="btn btn-primary" lang-node="en">Launch Dashboard</a>
-                <a href="#founder" class="btn btn-outline" lang-node="ar">مع المؤسس</a><a href="#founder" class="btn btn-outline" lang-node="en">Meet Founder</a>
-                <a href="#tech" class="btn btn-outline" style="padding: 8px 16px; border-radius: 8px;" lang-node="ar">المواصفات التقنية</a><a href="#tech" class="btn btn-outline" lang-node="en">Technical Specifications</a>
-            </div>
-        </div>
-    </header>
-
-    <section class="dashboard" id="dashboard">
-        <div class="section-label">
-            <span lang-node="ar">منصة المراقبة الحية</span><span lang-node="en">Live Telemetry Platform</span>
-            <h2 lang-node="ar">نظام التحكم والإشراف SCADA</h2><h2 lang-node="en">Enterprise SCADA Dashboard</h2>
-        </div>
-
-        <!-- HMI Monitor -->
-        <div class="grid-scada">
-            <div class="scada-card">
-                <div class="card-header">
-                    <div class="mode-status">HMI STATUS<div class="pulse"></div></div>
-                    <i class="fas fa-microchip"></i>
-                </div>
-                <div class="hmi-display">
-                    <div class="hmi-unit"><div class="hmi-led" id="l_p1"></div><div class="hmi-label">PUMP1</div></div>
-                    <div class="hmi-unit"><div class="hmi-led" id="l_p2"></div><div class="hmi-label">PUMP2</div></div>
-                    <div class="hmi-unit"><div class="hmi-led" id="l_alarm"></div><div class="hmi-label">ALARM</div></div>
-                </div>
-                <div class="progress-group">
-                    <div class="pg-label"><span>TANK A (Main)</span><b><span id="v-tb">40</span>%</b></div>
-                    <div class="pg-bg"><div class="pg-fill" id="f-tb" style="width: 85%"></div></div>
-                </div>
-                <div class="progress-group" style="margin-top: 1.5rem;">
-                    <div class="pg-label"><span>TANK B (Buffer)</span><b><span id="v-tb2">40</span>%</b></div>
-                    <div class="pg-bg"><div class="pg-fill" id="f-tb2" style="width: 40%"></div></div>
-                </div>
-            </div>
-
-            <!-- CSP Power -->
-            <div class="scada-card">
-                <div class="card-header">
-                    <div><span lang-node="ar">إنتاج الطاقة CSP</span><span lang-node="en">CSP Power Production</span></div>
-                    <i class="fas fa-solar-panel"></i>
-                </div>
-                <div class="scada-input">
-                    <div class="label-val"><span lang-node="ar">الطاقة المنتجة</span><span lang-node="en">Power Output</span><b><span id="v-pwr">70</span> kW/h</b></div>
-                    <input type="range" id="in-pwr" min="0" max="100" value="70" oninput="update()">
-                </div>
-                <div class="chart-container"><canvas id="sysChart"></canvas></div>
-            </div>
-
-            <!-- Smart Irrigation -->
-            <div class="scada-card">
-                <div class="card-header">
-                    <div><span lang-node="ar">تدفق الري الذكي</span><span lang-node="en">Smart Irrigation Flow</span></div>
-                    <i class="fas fa-water"></i>
-                </div>
-                <div class="scada-input">
-                    <div class="label-val"><span lang-node="ar">معدل التدفق</span><span lang-node="en">Flow Rate</span><b><span id="v-flow">140</span> L/sec</b></div>
-                    <input type="range" id="in-flow" min="0" max="200" value="140" oninput="update()">
-                </div>
-                <div class="progress-group" style="margin-top:2rem">
-                    <div class="pg-label"><span lang-node="ar">ضغط النظام</span><span lang-node="en">System Pressure</span><b>86%</b></div>
-                    <div class="pg-bg"><div class="pg-fill" style="width: 86%"></div></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- System Overview Stats -->
-        <div class="grid-stats">
-            <div class="stat-box">
-                <div class="stat-val" id="stat-energy">0</div>
-                <div class="stat-label"><span lang-node="ar">كيلووات/يوم</span><span lang-node="en">kWh/Day</span></div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-val" id="stat-water">0</div>
-                <div class="stat-label"><span lang-node="ar">لتر موفر/يوم</span><span lang-node="en">L Saved/Day</span></div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-val">100</div>
-                <div class="stat-label"><span lang-node="ar">نسبة الجاهزية</span><span lang-node="en">% Uptime</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PORTALS SECTION NEW -->
-    <section class="portals-section" id="portals">
-        <div class="section-label">
-            <span lang-node="ar">البوابات الاستراتيجية | الخدمات الإلكترونية</span>
-            <span lang-node="en">Strategic Portals | E-Services</span>
-        </div>
-        <div class="grid-portals">
-            <div class="portal-card">
-                <span class="portal-badge">DZ</span>
-                <i class="fas fa-chart-line"></i>
-                <h3 lang-node="ar">بورصة الاستثمار AAPI</h3>
-                <h3 lang-node="en">AAPI Investment Exchange</h3>
-                <p lang-node="ar">الوكالة الوطنية لتطوير الاستثمار - منصة الفرص الاستثمارية</p>
-                <p lang-node="en">National Investment Development Agency - Investment Opportunities Platform</p>
-                        </div>
-            <div class="portal-card">
-                <span class="portal-badge">DZ</span>
-                <i class="fas fa-shield-alt"></i>
-                <h3 lang-node="ar">الملكية الصناعية INAPI</h3>
-                <h3 lang-node="en">INAPI Industrial Property</h3>
-                <p lang-node="ar">المعهد الوطني الجزائري للملكية الصناعية - حماية الابتكار</p>
-                <p lang-node="en">Algerian National Institute for Industrial Property - Innovation Protection</p>
-                        </div>
-            <div class="portal-card">
-                <span class="portal-badge">DZ</span>
-                <i class="fas fa-rocket"></i>
-                <h3 lang-node="ar">الوكالة الوطنية ANAE</h3>
-                <h3 lang-node="en">ANAE National Agency</h3>
-   https://via.placeholder.com/150            <p lang-node="ar">باحث خبير في تكنولوجيا الصحراء والأتمتة الصناعية في سونلغاز. يهدف مشروع SIREP OASIS لربط أصالة الواحات بأحدث تقنيات التحكم الرقمي وتعزيز الاستدامة في البيئة الصحراوية الجزائرية.</p>
-             <p lang-node="ar">الوكالة الوطنية لدعم تشغيل الشباب - دعم ريادة الأعمال</p>
-                <p lang-node="en">National Agency for Youth Employment Support - Entrepreneurship Support</p>
-                        </div>
-            
-        </div>
-    </section>
-
-    <!-- Documents Section -->   <section class="docs-section" id="documents">     <div class="section-label">       <span lang-node="ar">الوثائق والإثباتات الرسمية</span>       <span lang-node="en">Official Legal Documents & Proof</span>     </div>     <div class="grid-docs">        <!-- INAPI Patent -->       <div class="doc-card">         <div class="doc-icon"><i class="fas fa-certificate"></i></div>         <div class="doc-badge">INAPI</div>         <h3 lang-node="ar">براءة الاختراع الوطنية</h3>         <h3 lang-node="en">National Patent</h3>         <div class="doc-ref">N° 5893 – 2025</div>         <p lang-node="ar">براءة اختراع وطنية صادرة عن INAPI لنظام SIREP OASIS NEXUS DZ</p>         <p lang-node="en">National patent issued by INAPI for SIREP OASIS NEXUS DZ system</p>         <div class="doc-meta"><i class="fas fa-calendar-alt"></i> 27/07/2025</div>       </div>        <!-- INAPI Trademark -->       <div class="doc-card">         <div class="doc-icon"><i class="fas fa-trademark"></i></div>         <div class="doc-badge">INAPI</div>         <h3 lang-node="ar">تسجيل العلامة التجارية</h3>         <h3 lang-node="en">Trademark Registration</h3>         <div class="doc-ref">N° 142965 – 2025</div>         <p lang-node="ar">تسجيل العلامة التجارية SIREP OASIS TECH – الصنف 9</p>         <p lang-node="en">Trademark registration SIREP OASIS TECH – Class 9</p>         <div class="doc-meta"><i class="fas fa-calendar-alt"></i> 08/04/2025</div>       </div>        <!-- AAPI -->       <div class="doc-card">         <div class="doc-icon"><i class="fas fa-handshake"></i></div>         <div class="doc-badge">AAPI</div>         <h3 lang-node="ar">بورصة الشراكة الاستثمارية</h3>         <h3 lang-node="en">Investment Partnership Exchange</h3>         <div class="doc-ref">N° 2336 – 17/02/2026</div>         <p lang-node="ar">ملف شراكة مقدّم لـ AAPI للبحث عن شركاء تقنيين وماليين</p>         <p lang-node="en">Partnership file submitted to AAPI seeking technical and financial partners</p>         <div class="doc-meta"><i class="fas fa-calendar-alt"></i> 17/02/2026</div>       </div>        <!-- Legal Status -->       <div class="doc-card">         <div class="doc-icon"><i class="fas fa-file-contract"></i></div>         <div class="doc-badge">DZ LAW</div>         <h3 lang-node="ar">الوضع القانوني للمؤسسة</h3>         <h3 lang-node="en">Legal Enterprise Status</h3>         <div class="doc-ref">NIF: 18503010006316000380</div>         <p lang-node="ar">Auto-entrepreneur → SARL Startup مرخّصة – بموجب القانون 22-23 المؤرخ 18/07/2022</p>         <p lang-node="en">Auto-entrepreneur → Licensed SARL Startup – under Law 22-23 dated 18/07/2022</p>         <div class="doc-meta"><i class="fas fa-id-card"></i> NIN: 109850064000630000</div>       </div>      </div>   </section>    <!-- Founder Section -->
-    <section class="founder-section" id="founder">
-        <img src="https://via.placeholder.com/150" class="founder-img" alt="Founder">
-        <div class="founder-content">
-            <h2 lang-node="ar">عن المؤسس</h2>
-            <h2 lang-node="en">About the Founder</h2>
-            <p lang-node="ar">باحث خبير في تكنولوجيا الصحراء والأتمتة الصناعية في سونلغاز. يهدف مشروع SIREP OASIS لربط أصالة الواحات بأحدث تقنيات التحكم الرقمي وتعزيز الاستدامة في البيئة الصحراوية الجزائرية.</p>
-            <p lang-node="en">Expert researcher in desert technology and industrial automation at Sonelgaz. SIREP OASIS bridges oasis traditions with cutting-edge digital control and sustainability in Algerian desert environments.</p>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2025 SIREP OASIS NEXUS TECH DZ - ALGERIA | Powered by NEXUS TECH DZ</p>
-    </footer>
-
-    <footer>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h3 lang-node="ar">عن الشركة</h3><h3 lang-node="en">About</h3><h3 lang-node="fr">À propos</h3><h3 lang-node="ber">ⵔⴼ ⵜⵎⴰⵔⴰⵏⵜ</h3>
-        <ul>
-          <li><a href="#"><i class="fas fa-info-circle"></i><span lang-node="ar">من نحن</span><span lang-node="en">Who we are</span><span lang-node="fr">Qui sommes-nous</span><span lang-node="ber">ⵎⴰⵏⵉⴼ ⵏⵏⵖ</span></a></li>
-          <li><a href="#"><i class="fas fa-history"></i><span lang-node="ar">تاريخنا</span><span lang-node="en">Our History</span><span lang-node="fr">Notre histoire</span><span lang-node="ber">ⴰⵎⵣⵉ⵮ⵏⵏⵖ</span></a></li>
-          <li><a href="#"><i class="fas fa-certificate"></i><span lang-node="ar">براءاتنا</span><span lang-node="en">Patents</span><span lang-node="fr">Brevets</span><span lang-node="ber">ⵜⵉⵘⴰⴼⵉⵏ</span></a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 lang-node="ar">القانونية</h3><h3 lang-node="en">Legal</h3><h3 lang-node="fr">Légal</h3><h3 lang-node="ber">ⴰⵙⵖⴰⵊⵓ</h3>
-        <ul>
-          <li><a href="#"><i class="fas fa-file-contract"></i><span lang-node="ar">الشروط والأحكام</span><span lang-node="en">Terms & Conditions</span><span lang-node="fr">Conditions générales</span><span lang-node="ber">ⵜⵉⵍⵉⵡⵉⵏ</span></a></li>
-          <li><a href="#"><i class="fas fa-user-shield"></i><span lang-node="ar">سياسة الخصوصية</span><span lang-node="en">Privacy Policy</span><span lang-node="fr">Politique de confidentialité</span><span lang-node="ber">ⵜⴰⵙⵔⴰⵍ ⵜⴰⵙⵖⵯⵉⵜ</span></a></li>
-          <li><a href="#"><i class="fas fa-cookie-bite"></i><span lang-node="ar">سياسة ملفات الارتباط</span><span lang-node="en">Cookies Policy</span><span lang-node="fr">Politique des cookies</span><span lang-node="ber">ⵜⴰⵙⵔⴰⵍ cookies</span></a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 lang-node="ar">الاتصال</h3><h3 lang-node="en">Contact</h3><h3 lang-node="fr">Contact</h3><h3 lang-node="ber">ⴰⵏⵎⵙⴰⵡⴰⵍ</h3>
-        <ul>
-          <li><a href="mailto:kacimo2000@gmail.com"><i class="fas fa-envelope"></i>kacimo2000@gmail.com</a></li>
-          <li><a href="tel:+213556640211"><i class="fas fa-phone"></i>+213 556 64 02 11</a></li>
-          <li><a href="#"><i class="fas fa-map-marker-alt"></i><span lang-node="ar">لغواط – الجزائر</span><span lang-node="en">Laghouat, Algeria</span><span lang-node="fr">Laghouat, Algérie</span><span lang-node="ber">Laghouat, Dzayer</span></a></li>
-        </ul>
-      </div>
+<nav>
+    <div class="logo">
+        <img src="https://skacimo1985-star.github.io/sirep-amoud/assets/logo.png" alt="SIREP">
+        <span>SIREP LIVE</span>
     </div>
-    <div class="footer-bottom">
-      <p lang-node="ar">© 2026 SIREP OASIS NEXUS TECH DZ | جميع الحقوق محفوظة | NIF: 18503010006316000380</p>
-      <p lang-node="en">© 2026 SIREP OASIS NEXUS TECH DZ | All Rights Reserved | NIF: 18503010006316000380</p>
-      <p lang-node="fr">© 2026 SIREP OASIS NEXUS TECH DZ | Tous droits réservés | NIF: 18503010006316000380</p>
-      <p lang-node="ber">© 2026 SIREP OASIS NEXUS TECH DZ | ⴰⴽⵍ ⵉⵣⵔⵔⵉⴼⵏ | NIF: 18503010006316000380</p>
-      <p lang-node="ar" style="font-size:0.8rem;margin-top:10px;">مسجلة قانونياً بموجب القانون 22-23 المؤرخ 18/07/2022</p>
-      <p lang-node="en" style="font-size:0.8rem;margin-top:10px;">Legally registered under Law 22-23 dated 18/07/2022</p>
-      <p lang-node="fr" style="font-size:0.8rem;margin-top:10px;">Enregistrée légalement en vertu de la loi 22-23 du 18/07/2022</p>
-      <p lang-node="ber" style="font-size:0.8rem;margin-top:10px;">Ittusxel s usliɣ s ⴰⵙⵖⴰⵊⵓ 22-23 (18/07/2022)</p>
+    <div class="status-badge">
+        <div class="pulse"></div> 📡 LIVE TELEMETRY V2.0
     </div>
-  </footer>
-        <script>
-        const ctx = document.getElementById('sysChart').getContext('2d');
-        let myChart = new Chart(ctx, {
+</nav>
 
+<section class="hero">
+    <div class="hero-bg-anim"></div>
+    <div class="hero-content">
+        <div class="patent-badge">INAPI PATENT N° 5893/2025</div>
+        <h1 lang-node="ar">الواحة الذكية المتكاملة</h1>
+        <h1 lang-node="en">SMART OASIS NEXUS</h1>
+        <p lang-node="ar">نظام ثوري لإدارة موارد المياه والطاقة والغذاء في الصحراء الجزائرية باستخدام تكنولوجيا الحشد الشمسي CSP والتحكم الرقمي المتقدم.</p>
+        <div class="hero-actions">
+            <button class="btn-sirep btn-glow">LAUNCH SCADA</button>
+        </div>
+    </div>
+</section>
+
+<div class="scada-grid">
+    <div class="glass-card">
+        <h3>⚡ ENERGY CSP 70KW</h3>
+        <div class="chart-box"><canvas id="energyChart"></canvas></div>
+        <div class="label-val">الإنتاج اللحظي: <b id="val-pwr">70</b> kW</div>
+    </div>
+    <div class="glass-card">
+        <h3>💧 WATER NEXUS</h3>
+        <div class="chart-box"><canvas id="waterChart"></canvas></div>
+        <div class="label-val">التدفق الذكي: <b id="val-flow">140</b> L/s</div>
+    </div>
+    <div class="glass-card">
+        <h3>🏗️ OASIS STATUS (50ha)</h3>
+        <div class="nexus-item" style="margin-top:20px;">
+            <i class="fas fa-microchip"></i>
+            <h3>SCADA ACTIVE</h3>
+            <p>Uptime: 99.9%</p>
+        </div>
+    </div>
+</div>
+
+<section class="nexus-section">
+    <h2 style="font-size:3rem; color:var(--secondary);">WEFEH NEXUS INFOGRAPHIC</h2>
+    <div class="nexus-grid">
+        <div class="nexus-item"><i class="fas fa-tint"></i><h3>WATER</h3><p>Smart Irrigation</p></div>
+        <div class="nexus-item"><i class="fas fa-bolt"></i><h3>ENERGY</h3><p>Solar CSP 70KW</p></div>
+        <div class="nexus-item"><i class="fas fa-leaf"></i><h3>FOOD</h3><p>Oasis Agriculture</p></div>
+        <div class="nexus-item"><i class="fas fa-globe-africa"></i><h3>ENV</h3><p>CO2 Reduction</p></div>
+        <div class="nexus-item"><i class="fas fa-heartbeat"></i><h3>HEALTH</h3><p>OneHealth Monitor</p></div>
+    </div>
+</section>
+
+<footer class="legal-footer">
+    <p>© 2025-2026 MAHROUG ERRAS BELKACEM — SIREP OASIS NEXUS TECH DZ</p>
+    <p style="color:var(--primary); margin-top:10px;">PROTÉGÉ PAR INAPI N° 5893/2025 | TOUS DROITS RÉSERVÉS</p>
+</footer>
+
+<script>
+    // Live Charts Implementation
+    const createChart = (id, label, color, data) => {
+        return new Chart(document.getElementById(id), {
+            type: 'line',
+            data: {
+                labels: Array(10).fill(''),
                 datasets: [{
-                    data: [70, 140, 100],
-                    backgroundColor: ['#00ff88', '#d4af37', '#1a2a1a'],
-                    borderWidth: 0,
-                    cutout: '80%'
+                    label: label,
+                    data: data,
+                    borderColor: color,
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: color + '22'
                 }]
             },
-            options: { plugins: { legend: { display: false } } }
+            options: { 
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { display: false }, x: { display: false } }
+            }
         });
+    };
+
+    const energyChart = createChart('energyChart', 'Power', '#00ff88', [60,65,70,68,72,70,75,70,68,70]);
+    const waterChart = createChart('waterChart', 'Flow', '#3b82f6', [120,130,140,135,145,140,150,140,130,140]);
+
+    // Live Data Simulation
+    setInterval(() => {
+        const pwr = (Math.random() * 10 + 65).toFixed(1);
+        const flow = (Math.random() * 20 + 130).toFixed(1);
+        document.getElementById('val-pwr').innerText = pwr;
+        document.getElementById('val-flow').innerText = flow;
         
-function setLang(l) {
-            currentLang = l;
-            document.body.className = 'lang-' + l;
-            document.dir = l === 'ar' || l === 'ber' ? 'rtl' : 'ltr';
-            ['btn-ar','btn-en','btn-fr','btn-ber'].forEach(id => {
-              const el = document.getElementById(id);
-              if(el) el.className = '';
-            });
-            const map = {ar:'btn-ar',en:'btn-en',fr:'btn-fr',ber:'btn-ber'};
-            if(map[l] && document.getElementById(map[l])) document.getElementById(map[l]).className = 'active';
-          }
+        energyChart.data.datasets[0].data.shift();
+        energyChart.data.datasets[0].data.push(pwr);
+        energyChart.update();
         
-        function update() {
-            const p = document.getElementById('in-pwr').value;
-            const f = document.getElementById('in-flow').value;
-            
-            document.getElementById('v-pwr').innerText = p;
-            document.getElementById('v-flow').innerText = f;
-            
-            const tb = Math.max(0, 100 - (f / 2.5)).toFixed(0);
-            document.getElementById('v-tb').innerText = tb;
-            document.getElementById('f-tb').style.width = tb + '%';
-            
-            const tb2 = Math.max(0, 100 - (f / 5)).toFixed(0);
-            document.getElementById('v-tb2').innerText = tb2;
-            document.getElementById('f-tb2').style.width = tb2 + '%';
-            
-            document.getElementById('l_p1').className = 'hmi-led' + (p < 30 ? ' on' : '');
-            document.getElementById('l_p2').className = 'hmi-led' + (tb < 40 ? ' on' : '');
-            document.getElementById('l_alarm').className = 'hmi-led' + (tb < 15 ? ' alarm' : '');
-            
-            document.getElementById('stat-energy').innerText = (p * 6).toFixed(0);
-            document.getElementById('stat-water').innerText = (Math.max(0, (150 - f)) * 86.4).toFixed(0);
-            
-            myChart.data.datasets[0].data = [p, f, 100];
-            myChart.update();
-        }
-        
-        update();
-    </script>
+        waterChart.data.datasets[0].data.shift();
+        waterChart.data.datasets[0].data.push(flow);
+        waterChart.update();
+    }, 2000);
+
+    // Hero Animation
+    gsap.from(".hero h1", { opacity: 0, y: 50, duration: 1.5, ease: "power4.out" });
+    gsap.from(".glass-card", { opacity: 0, scale: 0.8, stagger: 0.2, duration: 1 });
+</script>
 </body>
 </html>
