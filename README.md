@@ -1,5 +1,7 @@
 # 🌿 SIREP OASIS NEXUS TECH DZ – مشروع واحة الطاقة الذكية
 
+<img src="LOGO.SIREP=OASIS-NEXUS=TECH_DZ.jpg" width="250" alt="SIREP OASIS NEXUS TECH DZ Logo">
+
 <div align="center">
 
 ![SIREP Banner](https://img.shields.io/badge/SIREP--OASIS%20NEXUS%20TECH%20DZ-2ea44f?style=for-the-badge&logo=sun&logoColor=white)
