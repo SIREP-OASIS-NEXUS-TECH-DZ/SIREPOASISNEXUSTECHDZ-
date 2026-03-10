@@ -1,0 +1,63 @@
+body {
+  font-family: "Tahoma", sans-serif;
+  direction: rtl;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+header {
+  text-align: center;
+  background: #004d40;
+  color: white;
+  padding: 25px;
+}
+header img {
+  max-height: 100px;
+}
+section {
+  max-width: 900px;
+  margin: 20px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+h2 {
+  color: #004d40;
+  margin-top: 0;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+ul li::before {
+  content: "✔ ";
+  color: #004d40;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+form input, form textarea {
+  margin: 10px 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+form button {
+  background: #004d40;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+form button:hover {
+  background: #00695c;
+}
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #eee;
+  margin-top: 20px;
+}

@@ -4,38 +4,7 @@
 <meta charset="UTF-8">
 <title>🇩🇿 SIREP-COMPLETE v3.0 – الكل في ملف واحد</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--green:#006633;--red:#d21034;--blue:#1e3a8a;--gold:#f59e0b;--gray:#6b7280}
-body{font-family:Tahoma,monospace;background:linear-gradient(135deg,var(--green) 0%,#e8f5e8 50%,var(--red) 100%);color:#1f2937;padding:1rem;min-height:100vh}
-.container{max-width:1400px;margin:0 auto}
-.header{background:linear-gradient(90deg,var(--green),var(--blue),var(--red));color:#fff;text-align:center;padding:2rem;border-radius:15px;margin-bottom:2rem;box-shadow:0 20px 40px rgba(0,0,0,0.3)}
-.header h1{font-size:2rem;margin:0;font-weight:900}
-.tabs{display:flex;gap:1rem;margin-bottom:2rem;overflow-x:auto;padding-bottom:1rem;border-bottom:3px solid var(--gray)}
-.tab-btn{background:var(--gray);color:#fff;padding:1rem 1.5rem;border:none;border-radius:10px 10px 0 0;cursor:pointer;font-weight:bold;transition:all 0.3s;flex:1;text-align:center}
-.tab-btn.active{background:var(--blue);color:#fff;transform:translateY(-3px)}
-.tab-content{display:none;padding:2rem;background:#fff;border-radius:0 15px 15px 15px;box-shadow:0 15px 35px rgba(0,0,0,0.1);margin-bottom:2rem}
-.tab-content.active{display:block}
-.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:1.5rem}
-.panel{background:#f8fafc;border-radius:15px;padding:2rem;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
-.panel-header{background:linear-gradient(90deg,var(--blue),var(--green));color:#fff;padding:1rem;border-radius:10px;margin:-2rem -2rem 2rem -2rem;text-align:center;font-weight:bold}
-.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.status-item{padding:1rem;border-radius:10px;text-align:center;font-weight:bold}
-.status-ok{background:#10b981;color:#fff}
-.status-warn{background:var(--gold);color:#fff}
-.sensor-input{width:100%;padding:1rem;border:2px solid #d1d5db;border-radius:8px;font-family:monospace;margin:0.5rem 0}
-.btn{background:linear-gradient(45deg,var(--green),var(--blue));color:#fff;border:none;padding:1rem 2rem;border-radius:25px;cursor:pointer;font-weight:bold;font-family:monospace;transition:all 0.3s;display:block;margin:1rem auto}
-.btn:hover{transform:scale(1.05)}
-.matrix{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:#333;margin:1rem 0}
-.matrix div{padding:1rem;background:#fff;color:#333;border-radius:5px;text-align:center;font-weight:bold;font-size:0.9rem}
-.matrix-header{background:var(--blue);color:#fff}
-.ip-section{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);padding:3rem;border-radius:20px;margin:2rem 0;border-left:6px solid #10b981}
-.ip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
-.cert-card{background:#fff;padding:2rem;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.1);text-align:center}
-.cert-icon{font-size:3rem;color:#10b981;margin-bottom:1rem}
-.security{position:fixed;bottom:20px;right:20px;background:var(--blue);color:#fff;padding:1rem;border-radius:15px;font-weight:bold;box-shadow:0 10px 25px rgba(0,0,0,0.3);z-index:1000;font-size:0.9rem}
-@media(max-width:768px){.tabs{flex-direction:column}.dash-grid{grid-template-columns:1fr}}
-</style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <div class="container">
