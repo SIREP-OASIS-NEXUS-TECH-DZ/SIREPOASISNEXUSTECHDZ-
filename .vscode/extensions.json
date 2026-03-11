@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "ritwickdey.LiveServer",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-rename-tag",
+    "ms-vscode.live-share",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "ecmel.vscode-html-css",
+    "ms-vscode-remote.remote-containers"
+  ]
+}
