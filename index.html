@@ -13,7 +13,7 @@
 
 <nav>
     <a href="#" class="logo">
-        <img src="https://skacimo1985-star.github.io/sirep-amoud/assets/logo.png" alt="SIREP">
+        <img src="assets/logo.svg" alt="SIREP">
         SIREP OASIS NEXUS
     </a>
     <div class="status-badge">
@@ -46,7 +46,7 @@
         <h3>JAI-SIREP</h3>
         <p>نظام ذكاء اصطناعي سيادي لإدارة وتوقع موارد الواحات الصحراوية Algerian Oasis AI.</p>
         <div class="badge-row"><span class="badge">V3.0</span><span class="badge">AI Engine</span></div>
-        <button class="btn-launch">تشغيل JAI-CORE</button>
+        <a class="btn-launch module-action" href="#scada">تشغيل JAI-CORE</a>
     </div>
     <!-- SIREP Nexus -->
     <div class="module-card" style="border-color: var(--success);">
@@ -54,7 +54,7 @@
         <h3>SIREP NEXUS</h3>
         <p>إدارة الترابط الحيوي بين الماء والطاقة والغذاء لضمان استدامة الأنظمة البيئية.</p>
         <div class="badge-row"><span class="badge">Nexus Tech</span><span class="badge">SCADA</span></div>
-        <button class="btn-launch">المراقبة الحية</button>
+        <a class="btn-launch module-action" href="#scada">المراقبة الحية</a>
     </div>
     <!-- Oasis SIREP -->
     <div class="module-card">
@@ -62,7 +62,7 @@
         <h3>CSP ENERGY</h3>
         <p>تحسين إنتاج الطاقة الشمسية المركزة (CSP 70KW) لتشغيل أنظمة الري والتحلية.</p>
         <div class="badge-row"><span class="badge">Solar Tech</span><span class="badge">70KW</span></div>
-        <button class="btn-launch">تحليل الطاقة</button>
+        <a class="btn-launch module-action" href="#scada">تحليل الطاقة</a>
     </div>
     <!-- PathCare Rahma -->
     <div class="module-card">
@@ -70,7 +70,7 @@
         <h3>PathCare Rahma</h3>
         <p>تكامل نظام OneHealth لمراقبة صحة الإنسان والحيوان والبيئة في الواحة الذكية.</p>
         <div class="badge-row"><span class="badge">Health IoT</span><span class="badge">Safety</span></div>
-        <button class="btn-launch">بوابة الصحة</button>
+        <a class="btn-launch module-action" href="#modules">بوابة الصحة</a>
     </div>
     <!-- Knowledge Hub -->
     <div class="module-card">
@@ -78,7 +78,7 @@
         <h3>Knowledge Hub</h3>
         <p>تمكين الشباب ورواد الأعمال من تطوير مشاريع IoT في البيئات القاسية.</p>
         <div class="badge-row"><span class="badge">Training</span><span class="badge">Startup</span></div>
-        <button class="btn-launch">دخول الأكاديمية</button>
+        <a class="btn-launch module-action" href="https://github.com/skacimo1985-star/sirep-amoud/blob/main/SIREP-EXECUTIVE-BRIEF.md" target="_blank" rel="noopener noreferrer">دخول الأكاديمية</a>
     </div>
     <!-- Admin Dashboard -->
     <div class="module-card">
@@ -86,11 +86,11 @@
         <h3>Admin Dashboard</h3>
         <p>لوحة تحكم إدارية مركزية لإدارة المستخدمين والتراخيص والبيانات الضخمة.</p>
         <div class="badge-row"><span class="badge">Master Control</span><span class="badge">NIF Sync</span></div>
-        <button class="btn-launch">لوحة المدير</button>
+        <a class="btn-launch module-action" href="https://github.com/skacimo1985-star/sirep-amoud/blob/main/SIREP-BOARD-BRIEF.md" target="_blank" rel="noopener noreferrer">لوحة المدير</a>
     </div>
 </section>
 
-<section class="scada-section">
+    <section id="scada" class="scada-section">
     <h2 style="text-align: center; color: var(--accent); margin-bottom: 50px; font-size: 2.5rem;">📊 LIVE TELEMETRY LAB (POC)</h2>
     <div class="scada-grid">
         <div class="chart-box">
@@ -159,7 +159,7 @@
 
         [eChart, wChart].forEach((c, i) => {
             c.data.datasets[0].data.shift();
-            c.data.datasets[0].data.push(i === 0 ? pwr : flow);
+            c.data.datasets[0].data.push(i === 0 ? parseFloat(pwr) : parseFloat(flow));
             c.update('none');
         });
     }, 1500);
@@ -167,7 +167,17 @@
     // GSAP Animations
     gsap.from(".hero h1", { opacity: 0, y: 50, duration: 1.2, ease: "power3.out" });
     gsap.from(".stat-card", { opacity: 0, y: 30, stagger: 0.15, duration: 0.8, delay: 0.5 });
-    gsap.from(".module-card", { opacity: 0, scale: 0.9, stagger: 0.1, duration: 1, scrollTrigger: ".modules-grid" });
+    gsap.from(".module-card", { opacity: 0, scale: 0.9, stagger: 0.1, duration: 1, delay: 0.8 });
+
+    // Smooth anchors for module actions
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener('click', (ev) => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (!target) return;
+            ev.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
 </script>
 </body>
 </html>
