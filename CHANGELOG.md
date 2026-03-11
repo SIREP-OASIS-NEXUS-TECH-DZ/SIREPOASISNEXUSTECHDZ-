@@ -1,153 +1,215 @@
-# 📝 Changelog — سجل التغييرات
+# Changelog | سجل التغييرات
 
-> **Project:** SIREP OASIS NEXUS TECH DZ  
-> **Platform:** Smart Oasis Energy & Water Management Systems — Algeria  
-> **Author:** MAHROUG ERRAS BELKACEM  
-> **Location:** الأغواط، الجزائر | Laghouat, Algeria  
-> **WhatsApp:** 0556640211  
-> **Tel:** 0674005940  
-> **License:** CC BY-NC-ND 4.0  
-> **INAPI:** N° 5893/2025 · Brevet N° 142965
+EN:
+All notable changes to this project are documented in this file.
+Format follows Keep a Changelog, and this project follows Semantic Versioning.
 
----
+AR:
+يتم توثيق جميع التغييرات المهمة في هذا الملف.
+يعتمد التنسيق على Keep a Changelog ويتبع المشروع Semantic Versioning.
 
-All notable changes to this project are documented in this file.  
-Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) · Versioning follows [Semantic Versioning](https://semver.org/).
+## [Unreleased] | [غير منشور]
 
----
+### Planned | مخطط
 
-## 📚 حول إدارة النُّسخ | About Versioning
+EN:
+- Continue Special Economic Zone (ZES) pilot preparation and technical hardening for production readiness.
 
-يتبع هذا المشروع **الإدارة الدلالية لنُسخ البرمجيات 2.0.0** (Semantic Versioning 2.0.0)
+AR:
+- مواصلة التحضير للإطلاق التجريبي في المنطقة الاقتصادية الخاصة (ZES) وتعزيز الجاهزية التقنية للإنتاج.
 
-### 🔢 صيغة الترقيم | Version Format
+## [v1.1.0] - 2026-03-11
 
-```
-MAJOR.MINOR.PATCH
-جذري.بسيط.ترقيع
-```
+Release type | نوع الإصدار: `MINOR`
 
-### 📋 قواعد رفع الترقيم | Version Increment Rules
+### Added | مضاف
 
-| النوع | متى يُرفع | أمثلة |
-|------|----------|-------|
-| **MAJOR (جذري)** | تغييرات جذرية غير متوافقة رجعيًا | API breaking changes |
-| **MINOR (بسيط)** | إضافة ميزات جديدة متوافقة رجعيًا | New features, backward compatible |
-| **PATCH (ترقيع)** | إصلاح علل وأخطاء متوافقة رجعيًا | Bug fixes, security patches |
+EN:
+- Established a structured performance improvement plan for UI, CSS, images, data model, and API design.
+- Defined weekly technical priorities for platform optimization.
+- Added formal Special Economic Zone (ZES) integration planning for phased pilot rollout.
 
-### 🎯 أمثلة على التطبيق | Application Examples
+AR:
+- تم وضع خطة منظمة لتحسين الأداء تشمل واجهة المستخدم وCSS والصور ونموذج البيانات وتصميم الـ API.
+- تم تحديد أولويات تقنية أسبوعية لتحسين أداء المنصة.
+- تمت إضافة تخطيط رسمي لدمج المنطقة الاقتصادية الخاصة (ZES) وفق مراحل تنفيذ تدريجية.
 
-- **v0.9.0** → مرحلة التطوير الأولية (Initial development)
-- **v1.0.0** → أول إصدار مستقر للواجهة البرمجية العامة (First stable public API)
-- **v1.1.0** → إضافة ميزات جديدة دون كسر التوافقية (New features, no breaking changes)
-- **v2.0.0** → تغييرات جذرية تكسر التوافقية الرجعية (Breaking changes)
+### Planned | مخطط
 
----
+EN:
+- Review `index.html` and reduce unnecessary DOM depth.
+- Audit CSS and remove unused rules.
+- Convert heavy images to WebP with fallback formats.
+- Draft the initial data model (`oasis`, `wells`, `sensors`, `readings`).
+- Design API endpoints with pagination and filtering.
 
-## 🔖 سجل الإصدارات | Version History
+AR:
+- مراجعة ملف `index.html` وتقليل عمق بنية DOM غير الضروري.
+- تدقيق CSS وحذف القواعد غير المستخدمة.
+- تحويل الصور الثقيلة إلى WebP مع صيغ بديلة.
+- إعداد المسودة الأولى لنموذج البيانات (`oasis`, `wells`, `sensors`, `readings`).
+- تصميم نقاط API مع دعم التصفح الصفحي والتصفية.
 
----
+### Special Economic Zone (ZES) Integration Program | برنامج دمج المنطقة الاقتصادية الخاصة (ZES)
 
-## [v1.1.0] — 2026-03-11 🚀 Performance Improvement Plan | خطة تحسين الأداء
+EN:
+Objective: deploy a controlled pilot in a Special Economic Zone (ZES) to validate SIREP operations before wider regional rollout.
 
-**نوع الإصدار | Release Type:** `MINOR` — إضافة تحسينات وميزات جديدة متوافقة رجعيًا
+AR:
+الهدف: تنفيذ إطلاق تجريبي مضبوط داخل المنطقة الاقتصادية الخاصة (ZES) للتحقق من عمليات SIREP قبل التوسع الإقليمي.
 
-### ✅ Done Today | منجز اليوم
+#### Phase 1 - Readiness (Q2 2026) | المرحلة 1 - الجاهزية
 
-- Established a comprehensive performance improvement plan covering: UI, CSS, images, database schema, and API design.
-- Documented all action steps in `CHANGELOG.md` aligned with the live repository.
-- Defined weekly priorities for SIREP technical performance enhancement.
-- **Applied Semantic Versioning 2.0.0 standards** to project documentation.
+EN:
+- Confirm Special Economic Zone (ZES) governance scope and legal deployment constraints.
+- Define pilot perimeter (sites, wells, sensors, users, reporting frequency).
+- Publish integration checklist for network, power, and data retention.
+- Create a security baseline for edge devices, API keys, and access roles.
 
-### 📋 Planned | مخطط للتنفيذ
+AR:
+- تأكيد نطاق الحوكمة داخل المنطقة الاقتصادية الخاصة (ZES) والقيود القانونية للنشر.
+- تحديد نطاق التجربة (المواقع، الآبار، الحساسات، المستخدمون، وتواتر التقارير).
+- نشر قائمة تكامل للشبكة والطاقة وسياسات الاحتفاظ بالبيانات.
+- إنشاء خط أساس أمني للأجهزة الطرفية ومفاتيح API وصلاحيات الوصول.
 
-| # | Task | Priority | Status |
-|---|------|----------|--------|
-| 1 | Review `index.html` — remove redundant HTML elements, reduce DOM depth | 🔴 High | 📋 Planned |
-| 2 | Audit unified CSS in `assets/css/` — purge unused rules | 🔴 High | 📋 Planned |
-| 3 | Compress all images → convert to WebP with fallback formats | 🟠 Medium | 📋 Planned |
-| 4 | Draft initial database schema (oasis · wells · sensors · readings) in a `.md` file | 🟠 Medium | 📋 Planned |
-| 5 | Identify fields requiring database indexes for future dynamic features | 🟡 Low | 📋 Planned |
-| 6 | Design API endpoints: return only required fields + support pagination & filtering | 🟡 Low | 📋 Planned |
+#### Phase 2 - Pilot Deployment (Q2-Q3 2026) | المرحلة 2 - النشر التجريبي
 
----
+EN:
+- Install and register sensor gateways for water and energy telemetry.
+- Connect field devices to ingestion APIs and validate payload contracts.
+- Enable dashboard views for Special Economic Zone (ZES) operators (operations, alarms, trends).
+- Configure alert thresholds for anomaly detection and incident workflow.
 
-## [v1.0.0] — 2026-03-03 🌟 الإصدار الرسمي الأول | First Official Release
+AR:
+- تركيب وتسجيل بوابات الحساسات لقياسات المياه والطاقة.
+- ربط الأجهزة الميدانية بواجهات الإدخال والتحقق من عقود البيانات المرسلة.
+- تفعيل لوحات متابعة لمشغلي المنطقة الاقتصادية الخاصة (ZES) (التشغيل، الإنذارات، الاتجاهات).
+- ضبط عتبات التنبيه لكشف الشذوذ وإدارة سير الحوادث.
 
-**نوع الإصدار | Release Type:** `MAJOR` — أول إصدار مستقر للواجهة البرمجية العامة
+#### Phase 3 - Stabilization (Q3 2026) | المرحلة 3 - التثبيت
 
-### ➕ Added | مضاف
+EN:
+- Benchmark data freshness, API latency, and dashboard response times.
+- Tune indexing strategy for readings and event tables.
+- Validate backup, restore, and incident recovery procedures.
+- Conduct user acceptance review with Special Economic Zone (ZES) stakeholders.
 
-- `index.html` — Multilingual Dashboard (Arabic / French / English / Tamazight)
-- `README.md` — Professional documentation with badges and technical tables
-- `STATUTS-FONDATEURS.md` — Full founding charter + 2026 roadmap
-- `SECURITY.md` — Security policy and intellectual property protection
-- `LICENSE` — CC BY-NC-ND 4.0 © 2025–2026 MAHROUG ERRAS BELKACEM
-- `CHANGELOG.md` — This file
-- GitHub Release `v1.0.0` — Documented and protected
-- Patent **INAPI N° 5893/2025** — Brevet N° 142965
-- PCT International coverage — 6 MENA countries
+AR:
+- قياس مرجعي لحداثة البيانات وزمن استجابة API وأداء اللوحات.
+- تحسين استراتيجية الفهرسة لجداول القراءات والأحداث.
+- التحقق من إجراءات النسخ الاحتياطي والاستعادة والتعافي من الحوادث.
+- تنفيذ مراجعة قبول المستخدم مع الجهات المعنية في المنطقة الاقتصادية الخاصة (ZES).
 
-### 🎯 SemVer Compliance
+#### Phase 4 - Scale Decision (Q4 2026) | المرحلة 4 - قرار التوسعة
 
-This release marks the **first stable public API** of SIREP OASIS NEXUS TECH DZ platform.  
-All future changes will follow strict Semantic Versioning guidelines.
+EN:
+- Produce a pilot performance report with KPI outcomes.
+- Approve rollout planning for additional zones based on risk and impact.
+- Freeze API contract changes and publish long-term support policy.
 
----
+AR:
+- إعداد تقرير أداء للتجربة يتضمن نتائج مؤشرات الأداء.
+- اعتماد خطة التوسعة لمناطق إضافية بناء على المخاطر والأثر.
+- تجميد تغييرات عقود API ونشر سياسة دعم طويلة المدى.
 
-## [v0.9.0] — 2025-12-30 🔧 Pre-release | مرحلة التطوير
+#### Special Economic Zone (ZES) Milestones | معالم المنطقة الاقتصادية الخاصة (ZES)
 
-**نوع الإصدار | Release Type:** `MINOR` (pre-1.0.0) — مرحلة التطوير الأولية
+EN:
+| Milestone | Target Date | Priority | Status |
+|---|---|---|---|
+| Governance and legal validation complete | 2026-04-15 | High | Planned |
+| Sensor and gateway onboarding complete | 2026-05-30 | High | Planned |
+| API and dashboard pilot go-live | 2026-06-20 | High | Planned |
+| KPI review and stabilization sign-off | 2026-08-15 | Medium | Planned |
+| Regional scale recommendation report | 2026-10-01 | Medium | Planned |
 
-### ➕ Added | مضاف
+AR:
+| المعلم | التاريخ المستهدف | الأولوية | الحالة |
+|---|---|---|---|
+| اكتمال التحقق الحوكمي والقانوني | 2026-04-15 | عالية | مخطط |
+| اكتمال إدماج الحساسات والبوابات | 2026-05-30 | عالية | مخطط |
+| الإطلاق التجريبي للـ API واللوحة | 2026-06-20 | عالية | مخطط |
+| اعتماد مراجعة المؤشرات والتثبيت | 2026-08-15 | متوسطة | مخطط |
+| تقرير توصية التوسع الإقليمي | 2026-10-01 | متوسطة | مخطط |
 
-- `sirep.3.0.1.html` — Initial HTML structure of the portal
-- `Laghouat.html` — الأغواط page
-- `l.comp..html` — Component page
-- `lyahssoun` — Dashboard page
+#### Special Economic Zone (ZES) KPIs | مؤشرات الأداء للمنطقة الاقتصادية الخاصة (ZES)
 
-### 🔧 Changed | تعديلات
+EN:
+- Telemetry delivery success rate: >= 99.0%
+- Critical alert acknowledgment time: <= 10 minutes
+- API p95 response time for dashboard endpoints: <= 450 ms
+- Data availability for pilot entities: >= 99.5%
+- Incident recovery objective (RTO): <= 2 hours
 
-- Improved HTML structure and responsive design
-- Reviewed color schemes, badges, and buttons
+AR:
+- معدل نجاح تسليم القياسات: >= 99.0%
+- زمن تأكيد التنبيه الحرج: <= 10 دقائق
+- زمن استجابة API عند p95 لنقاط اللوحة: <= 450 ms
+- توافر البيانات لكيانات التجربة: >= 99.5%
+- هدف زمن الاستعادة من الحوادث (RTO): <= ساعتين
 
-### ⚠️ Development Phase Notice
+## [v1.0.0] - 2026-03-03
 
-Version 0.x.x indicates **initial development phase**. The public API is not yet stable.  
-Breaking changes may occur at any time without MAJOR version increment.
+Release type | نوع الإصدار: `MAJOR`
 
----
+### Added | مضاف
 
-## 📅 Upcoming Roadmap | المخطط للمستقبل
+EN:
+- First official stable release baseline.
+- Core platform documentation and release metadata.
+- Initial public release governance under Semantic Versioning.
 
-| Version | Target Date | Content | Type |
-|---------|-------------|---------|------|
-| v1.1.0 | Q2 2026 | Live CSP IoT Dashboard integration | MINOR |
-| v1.2.0 | Q3 2026 | Full WEFEH system | MINOR |
-| v2.0.0 | Q4 2026–2027 | Full SIREP ATLAS SaaS platform | MAJOR |
+AR:
+- أول خط أساس رسمي لإصدار مستقر.
+- توثيق المنصة الأساسي وبيانات الإصدار.
+- تأسيس حوكمة الإصدار العام وفق Semantic Versioning.
 
-### 📖 Version Type Legend
+## [v0.9.0] - 2025-12-30
 
-- **MAJOR (جذري):** Breaking changes to public API
-- **MINOR (بسيط):** New features, backward compatible
-- **PATCH (ترقيع):** Bug fixes and security patches
+Release type | نوع الإصدار: `MINOR` (pre-1.0.0 development phase)
 
----
+### Added | مضاف
 
-## 📚 مراجع | References
+EN:
+- Initial portal structure and early dashboard pages.
 
-- **Semantic Versioning 2.0.0:** https://semver.org/
-- **Keep a Changelog:** https://keepachangelog.com/
-- **SemVer Arabic:** https://semver.org/lang/ar/
+AR:
+- البنية الأولية للبوابة والصفحات المبكرة للوحة التحكم.
 
----
+### Changed | تعديلات
 
-<div align="center">
+EN:
+- Improved responsive layout and visual components during pre-release phase.
 
-© 2025–2026 **MAHROUG ERRAS BELKACEM** — SIREP OASIS NEXUS TECH DZ  
-Protected under **CC BY-NC-ND 4.0** · Patent **INAPI N° 5893/2025**  
-الأغواط، الجزائر 🇩🇿 | [GitHub Repository](https://github.com/skacimo1985-star/sirep-amoud)
+AR:
+- تحسين التخطيط المتجاوب والمكونات البصرية خلال مرحلة ما قبل الإصدار.
 
-**Following Semantic Versioning 2.0.0 Standards**
+### Notes | ملاحظات
 
-</div>
+EN:
+- Version `0.x.x` indicates an unstable development phase and may include breaking changes.
+
+AR:
+- يدل الإصدار `0.x.x` على مرحلة تطوير غير مستقرة وقد تتضمن تغييرات غير متوافقة.
+
+## Versioning Notes | ملاحظات إدارة النُسخ
+
+EN:
+- MAJOR: breaking changes to the public API.
+- MINOR: backward-compatible features and enhancements.
+- PATCH: backward-compatible bug fixes and security updates.
+
+AR:
+- MAJOR: تغييرات جذرية تكسر توافق الواجهة البرمجية العامة.
+- MINOR: ميزات وتحسينات متوافقة رجعيًا.
+- PATCH: إصلاحات أخطاء وتحديثات أمنية متوافقة رجعيًا.
+
+## References | مراجع
+
+EN:
+- https://keepachangelog.com/
+- https://semver.org/
+
+AR:
+- https://keepachangelog.com/
+- https://semver.org/
