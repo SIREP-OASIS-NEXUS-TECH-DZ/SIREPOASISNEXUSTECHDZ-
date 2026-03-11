@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>SIREP‑SUPERIOR v3.1 – النسخة المتقدمة | Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="container">
+  
+  <!-- الرأس -->
+  <div class="header">
+    <h1>SIREP‑SUPERIOR</h1>
+    <div class="version-tag">الإصدار v3.1 – المتقدم</div>
+  </div>
+
+  <!-- مقارنة الأنظمة العالمية -->
+  <section class="comparison-grid">
+    <div class="sys-card" data-sys="SIREP v3.1">
+      <div class="sys-icon">🇩🇿</div>
+      <div class="sys-metrics">
+        <div class="metric"><span>Scan Time</span><span class="metric-value">1.8ms</span></div>
+        <div class="metric"><span>Availability</span><span class="metric-value">99.999%</span></div>
+        <div class="metric"><span>I/O Throughput</span><span class="metric-value">12.3M/sec</span></div>
+        <div class="metric"><span>SIL Level</span><span class="metric-value">SIL4+</span></div>
+        <div class="metric"><span>Temp Range</span><span class="metric-value">-45°C ~ +90°C</span></div>
+      </div>
+    </div>
+    
+    <div class="sys-card" data-sys="GE Mark VIeS">
+      <div class="sys-icon">⚡</div>
+      <div class="sys-metrics">
+        <div class="metric"><span>Scan Time</span><span class="metric-value">5ms</span></div>
+        <div class="metric"><span>Availability</span><span class="metric-value">99.98%</span></div>
+        <div class="metric"><span>I/O Throughput</span><span class="metric-value">500K/sec</span></div>
+        <div class="metric"><span>SIL Level</span><span class="metric-value">SIL3</span></div>
+        <div class="metric"><span>Temp Range</span><span class="metric-value">-20°C ~ +60°C</span></div>
+      </div>
+    </div>
+    
+    <div class="sys-card" data-sys="Siemens SIMATIC">
+      <div class="sys-icon">🔧</div>
+      <div class="sys-metrics">
+        <div class="metric"><span>Scan Time</span><span class="metric-value">4ms</span></div>
+        <div class="metric"><span>Availability</span><span class="metric-value">99.97%</span></div>
+        <div class="metric"><span>I/O Throughput</span><span class="metric-value">800K/sec</span></div>
+        <div class="metric"><span>SIL Level</span><span class="metric-value">SIL3</span></div>
+        <div class="metric"><span>Temp Range</span><span class="metric-value">-25°C ~ +70°C</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- لوحة الأداء الحي -->
+  <section class="performance-dashboard">
+    <div class="dashboard-header">
+      <h2 class="dashboard-title">لوحة الأداء الحي – AI Brain</h2>
+      <p>المراقبة الذكية في الوقت الفعلي | متكامل مع IoT و SCADA</p>
+    </div>
+    
+    <div class="live-metrics">
+      <div class="metric-card">
+        <div class="metric-value-big" id="scanVal">1.8</div>
+        <div class="metric-label">Scan Time (ms)</div>
+        <div class="gauge-bg"><div class="gauge-fill">✓</div></div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-value-big" id="availVal">99.999</div>
+        <div class="metric-label">Availability (%)</div>
+        <div class="gauge-bg"><div class="gauge-fill">✓</div></div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-value-big" id="ioVal">12.3</div>
+        <div class="metric-label">I/O (M/sec)</div>
+        <div class="gauge-bg"><div class="gauge-fill">✓</div></div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-value-big" id="tempVal">47</div>
+        <div class="metric-label">Temp (°C)</div>
+        <div class="gauge-bg"><div class="gauge-fill">✓</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ميزات v3.1 الجديدة -->
+  <section class="v31-features">
+    <div class="feature-card">
+      <div class="feature-icon">🧠</div>
+      <h3 class="feature-title">AI Brain مدمج</h3>
+      <p>التنبؤ بالأعطال • التعلم الذاتي • تحسين الأداء</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🌡️</div>
+      <h3 class="feature-title">صمم للصحراء</h3>
+      <p>-45°C إلى +90°C • مقاوم للغبار • صفر فقد</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3 class="feature-title">IoT + OPC UA</h3>
+      <p>تكامل كامل مع الأجهزة • بروتوكولات صناعية</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3 class="feature-title">أمان SIL4+</h3>
+      <p>حماية فائقة • تشفير كمي • DZ-CERT متوافق</p>
+    </div>
+  </section>
+
+  <!-- التذييل -->
+  <footer class="footer">
+    <div class="dz-pride">ملكية فكرية جزائرية 100% 🇩🇿</div>
+    <p>بلقاسم محروق الراس – 2025 | محمي قانون 03-05 الجزائري</p>
+    <div class="ip-notice">
+      جميع الحقوق محفوظة • للاستخدام التعليمي/العرضي فقط
+    </div>
+  </footer>
+
+</div>
+
+<script>
+// تحريك المؤشرات الحية
+function updateMetrics(){
+  const scan = (1.8 + Math.random()*0.4).toFixed(1);
+  const avail = (99.999 - Math.random()*0.001).toFixed(3);
+  const io = (12.3 + Math.random()*0.8).toFixed(1);
+  const temp = (45 + Math.random()*5).toFixed(0);
+  
+  document.getElementById('scanVal').textContent = scan;
+  document.getElementById('availVal').textContent = avail;
+  document.getElementById('ioVal').textContent = io;
+  document.getElementById('tempVal').textContent = temp;
+}
+
+// تشغيل كل 2 ثانية
+setInterval(updateMetrics, 2000);
+updateMetrics(); // التشغيل الأولي
+
+// تأثيرات تفاعلية
+document.querySelectorAll('.feature-card').forEach((card,i)=>{
+  card.addEventListener('click',()=>{
+    card.style.transform = 'scale(0.98)';
+    setTimeout(()=>card.style.transform='',200);
+  });
+});
+</script>
+
+</body>
+</html>

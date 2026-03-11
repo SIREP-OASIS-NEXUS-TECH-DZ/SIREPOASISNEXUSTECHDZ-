@@ -45,6 +45,7 @@
 
 - Full declaration: [PROJECT-LEGAL-STATUS.md](./PROJECT-LEGAL-STATUS.md)
 - Public pilot roadmap page: [PILOT-ROADMAP.html](./PILOT-ROADMAP.html)
+- Startup competition page (CEEI): [pages/startup-ceei.html](./pages/startup-ceei.html)
 
 ## 🧬 Nexus Framework (WEFEH)
 The project follows the **Water-Energy-Food-Ecosystem-Health (WEFEH)** nexus approach.
@@ -64,6 +65,9 @@ Real-time analytics are powered by **ThingSpeak**.
 
 ## 📁 Structure du Repository
 - `index.html`: Dashboard principal avec support multi-langues.
+- `assets/js/main.js`: Script principal du dashboard (charts, animations, theme, loader).
+- `pages/startup-ceei.html`: Page de presentation Startup/CEEI (AR/FR/EN).
+- `pages/legacy/`: Pages historiques/expérimentales conservées pour compatibilité.
 - `WEFEH.md`: Documentation du framework stratégique.
 - `IoT_THING_SPEAK.md`: Guide technique pour l'intégration IoT.
 - `STATUTS-FONDATEURS.md`: Cadre juridique et légal du projet.

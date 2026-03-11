@@ -49,6 +49,7 @@
 </div>
 
 <section class="quick-links" aria-label="Quick navigation">
+    <a href="./pages/startup-ceei.html" target="_blank" rel="noopener noreferrer">Startup CEEI Pitch</a>
     <a href="./PILOT-ROADMAP.html" target="_blank" rel="noopener noreferrer">Pilot Roadmap</a>
     <a href="https://github.com/skacimo1985-star/sirep-amoud/blob/main/PROJECT-LEGAL-STATUS.md" target="_blank" rel="noopener noreferrer">Legal & Pilot Status</a>
     <a href="https://github.com/skacimo1985-star/sirep-amoud/blob/main/README.md" target="_blank" rel="noopener noreferrer">Project Overview</a>
@@ -140,90 +141,6 @@
     </div>
 </footer>
 
-<script>
-    // Live Charts Implementation
-    const createChart = (id, label, color) => {
-        return new Chart(document.getElementById(id), {
-            type: 'line',
-            data: {
-                labels: Array(15).fill(''),
-                datasets: [{
-                    label: label,
-                    data: Array(15).fill(0).map(() => Math.random() * 20 + 50),
-                    borderColor: color,
-                    backgroundColor: color + '22',
-                    tension: 0.4,
-                    fill: true,
-                    borderWidth: 3,
-                    pointRadius: 0
-                }]
-            },
-            options: { 
-                responsive: true, 
-                maintainAspectRatio: false, 
-                plugins: { legend: { display: false } },
-                scales: { 
-                    y: { display: true, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#666' } }, 
-                    x: { display: false } 
-                } 
-            }
-        });
-    };
-    
-    const eChart = createChart('energyChart', 'Energy', '#00ff88');
-    const wChart = createChart('waterChart', 'Flow', '#3b82f6');
-
-    setInterval(() => {
-        const pwr = (Math.random() * 15 + 60).toFixed(1);
-        const flow = (Math.random() * 30 + 120).toFixed(1);
-        
-        document.getElementById('val-pwr').innerText = pwr;
-        document.getElementById('val-flow').innerText = flow;
-
-        [eChart, wChart].forEach((c, i) => {
-            c.data.datasets[0].data.shift();
-            c.data.datasets[0].data.push(i === 0 ? parseFloat(pwr) : parseFloat(flow));
-            c.update('none');
-        });
-    }, 1500);
-
-    // GSAP Animations
-    gsap.from(".hero h1", { opacity: 0, y: 50, duration: 1.2, ease: "power3.out" });
-    gsap.from(".stat-card", { opacity: 0, y: 30, stagger: 0.15, duration: 0.8, delay: 0.5 });
-    gsap.from(".module-card", { opacity: 0, scale: 0.9, stagger: 0.1, duration: 1, delay: 0.8 });
-    gsap.from(".quick-links a", { opacity: 0, y: 12, stagger: 0.06, duration: 0.55, delay: 0.4 });
-
-    // Smooth anchors for module actions
-    document.querySelectorAll('a[href^="#"]').forEach((a) => {
-        a.addEventListener('click', (ev) => {
-            const target = document.querySelector(a.getAttribute('href'));
-            if (!target) return;
-            ev.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    });
-
-    // Theme toggle (persisted)
-    const themeToggle = document.getElementById('theme-toggle');
-    const preferred = localStorage.getItem('sirep-theme') || 'dark';
-    if (preferred === 'light') {
-        document.body.classList.add('light-theme');
-        themeToggle.textContent = '🌙';
-    }
-
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('light-theme');
-        const isLight = document.body.classList.contains('light-theme');
-        themeToggle.textContent = isLight ? '🌙' : '☀️';
-        localStorage.setItem('sirep-theme', isLight ? 'light' : 'dark');
-    });
-
-    // Loader off after first paint
-    window.addEventListener('load', () => {
-        const loader = document.getElementById('app-loader');
-        loader.classList.add('done');
-        setTimeout(() => loader.remove(), 380);
-    });
-</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

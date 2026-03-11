@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦅 هدهد SIREP - تنمية صحراوية</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="header">🦅 هدهد SIREP</div>
+
+<div class="container">
+  <div class="section">
+    <div class="title">🏜️ تنمية صحراوية</div>
+    <div class="stats">
+      <div class="stat">720kWh<br>الواحة</div>
+      <div class="stat">1200L<br>ماء يومي</div>
+      <div class="stat">56<br>أسرة تكافل</div>
+      <div class="stat">1.75M<br>دج/شهر</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="tasbih" onclick="tasbihPlus()">🌟 سبحان الله <span id="tasbihCount">0</span></div>
+    <button class="btn" onclick="resetTasbih()">🔄 إعادة</button>
+    <div id="tasbihStatus"></div>
+  </div>
+
+  <div class="section">
+    <div class="title">💰 الربح الحي</div>
+    <div class="counter" id="profitCounter">1.52M دج</div>
+  </div>
+
+  <div class="section">
+    <div class="title">📱 خدمات فورية</div>
+    <button class="btn" onclick="service('umra')">🕌 عمرة تكافل 65K</button>
+    <button class="btn" onclick="service('takafol')">👶 تكافل أسر 20K</button>
+    <button class="btn" onclick="service('oasis')">🏜️ الواحة Live</button>
+  </div>
+</div>
+
+<div class="footer">
+  PWA - يعمل بدون إنترنت | بسم الله الرحمن الرحيم
+</div>
+
+<script>
+let tasbih=localStorage.tasbih||0;
+document.getElementById('tasbihCount').textContent=tasbih;
+
+function tasbihPlus(){
+  tasbih++;localStorage.tasbih=tasbih;
+  document.getElementById('tasbihCount').textContent=tasbih;
+  document.getElementById('tasbihStatus').textContent=tasbih>=100?'✅ تكملة 100× بركة رزق':'جاري التسبيح...';
+  if(tasbih>=100) tasbih=0;
+}
+
+function resetTasbih(){
+  tasbih=0;localStorage.tasbih=0;
+  document.getElementById('tasbihCount').textContent=0;
+  document.getElementById('tasbihStatus').textContent='';
+}
+
+function service(type){
+  const msg={
+    umra:'🕌 حجز عمرة تكافل 65K ✅
+💳 بريدي موب 20K أولاً',
+    takafol:'👶 تكافل 56 أسرة يتامى
+💰 دعم شهري 20K دج',
+    oasis:'🏜️ الواحة الذكية Live
+⚡ 720kWh + 1200L ماء يومي'
+  }[type];
+  alert(msg);
+}
+
+setInterval(()=>{
+  const profit=1.52+Math.sin(Date.now()/3000)*0.15;
+  document.getElementById('profitCounter').textContent=profit.toFixed(2)+'M دج';
+},1000);
+
+// PWA Service Worker
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+</script>
+</body>
+</html>a 

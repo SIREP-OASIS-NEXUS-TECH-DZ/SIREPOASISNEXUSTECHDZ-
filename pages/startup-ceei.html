@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIREP Oasis Lab | CEEI Startup Pitch</title>
+  <style>
+    :root {
+      --bg: #f4f7f9;
+      --card: #ffffff;
+      --ink: #111111;
+      --muted: #3a3a3a;
+      --brand: #006233;
+      --accent: #0b3b71;
+      --warm: #ffe066;
+      --ring: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    header {
+      position: relative;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      color: #fff;
+      padding: 1rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+
+    header p {
+      margin: 0.4rem 0 0;
+      font-size: 0.95rem;
+      opacity: 0.95;
+    }
+
+    .lang-switch {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      display: flex;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+    }
+
+    .lang-switch button {
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .lang-switch button.active {
+      background: #fff;
+      color: var(--accent);
+      border-color: #fff;
+      font-weight: 700;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 1.5rem auto;
+      padding: 0 1rem 2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--ring);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.12rem;
+      border-right: 4px solid var(--brand);
+      padding-right: 0.45rem;
+    }
+
+    .tagline {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    ul {
+      padding-right: 1.2rem;
+      margin: 0.45rem 0 0.6rem;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    li { margin-bottom: 0.25rem; }
+
+    .badge {
+      display: inline-block;
+      background: var(--warm);
+      color: #222;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-left: 0.3rem;
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 0.65rem 1.3rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .cta a.secondary {
+      background: #ffffff;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #555;
+      padding: 1rem 0 1.2rem;
+    }
+
+    @media (max-width: 700px) {
+      header h1 { font-size: 1.3rem; }
+      .lang-switch { position: static; justify-content: center; margin-bottom: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="lang-switch" aria-label="Language switch">
+      <button id="btn-ar" class="active" type="button">AR</button>
+      <button id="btn-fr" type="button">FR</button>
+      <button id="btn-en" type="button">EN</button>
+    </div>
+    <h1 data-i18n="title">منصة SIREP Oasis Lab</h1>
+    <p data-i18n="subtitle">نموذج أولي لواحة ذكية بالطاقة المتجددة والذكاء الاصطناعي</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2><span data-i18n="identity">بطاقة تعريف المشروع</span> <span class="badge">Startup / CEEI</span></h2>
+      <p class="tagline" data-i18n="identity_text">
+        منصة تجريبية تربط بين إنتاج الطاقة المتجددة في الواحة، تخزينها، وتوزيعها على الماء والخدمات الأساسية،
+        مع لوحة رقمية للمراقبة واتخاذ القرار.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="problem">المشكلة</h2>
+      <ul>
+        <li data-i18n="problem_1">ضياع كبير للطاقة والماء في الواحات بسبب غياب المراقبة الذكية.</li>
+        <li data-i18n="problem_2">تكاليف تشغيل مرتفعة لمضخات الماء والإنارة والتبريد.</li>
+        <li data-i18n="problem_3">صعوبة اتخاذ قرارات مبنية على بيانات لحظية في المناطق الصحراوية.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="solution">الحل المقترح</h2>
+      <ul>
+        <li data-i18n="solution_1">تركيب عقدة SIREP محلية (حساسات + متحكم + اتصال) في الواحة.</li>
+        <li data-i18n="solution_2">لوحة تحكم ويب لعرض الطاقة، الماء، والإنذارات بشكل فوري.</li>
+        <li data-i18n="solution_3">خوارزمية إدارة طاقة (EMS) لتحديد أوقات تشغيل المضخات والأحمال الذكية.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="value">قيمة المشروع للمسابقة</h2>
+      <ul>
+        <li data-i18n="value_1">دمج الطاقة المتجددة وIoT والذكاء الاصطناعي في سيناريو واحات قابل للتطبيق.</li>
+        <li data-i18n="value_2">قابل للتجريب في واحة واحدة ثم التوسع التدريجي في الجزائر.</li>
+        <li data-i18n="value_3">يمهد لإنشاء مؤسسة ناشئة متخصصة في حلول الواحة الذكية.</li>
+      </ul>
+      <div class="cta">
+        <a href="#" data-i18n="pdf">تحميل عرض المشروع (PDF)</a>
+        <a class="secondary" href="../index.html" data-i18n="back">العودة للبوابة الرئيسية</a>
+      </div>
+    </section>
+  </main>
+
+  <footer data-i18n="footer">
+    © 2026 SIREP Oasis Lab - نموذج تجريبي لملف مسابقة CEEI / Startup.dz
+  </footer>
+
+  <script>
+    const i18n = {
+      ar: {
+        title: 'منصة SIREP Oasis Lab',
+        subtitle: 'نموذج أولي لواحة ذكية بالطاقة المتجددة والذكاء الاصطناعي',
+        identity: 'بطاقة تعريف المشروع',
+        identity_text: 'منصة تجريبية تربط بين إنتاج الطاقة المتجددة في الواحة، تخزينها، وتوزيعها على الماء والخدمات الأساسية، مع لوحة رقمية للمراقبة واتخاذ القرار.',
+        problem: 'المشكلة',
+        problem_1: 'ضياع كبير للطاقة والماء في الواحات بسبب غياب المراقبة الذكية.',
+        problem_2: 'تكاليف تشغيل مرتفعة لمضخات الماء والإنارة والتبريد.',
+        problem_3: 'صعوبة اتخاذ قرارات مبنية على بيانات لحظية في المناطق الصحراوية.',
+        solution: 'الحل المقترح',
+        solution_1: 'تركيب عقدة SIREP محلية (حساسات + متحكم + اتصال) في الواحة.',
+        solution_2: 'لوحة تحكم ويب لعرض الطاقة، الماء، والإنذارات بشكل فوري.',
+        solution_3: 'خوارزمية إدارة طاقة (EMS) لتحديد أوقات تشغيل المضخات والأحمال الذكية.',
+        value: 'قيمة المشروع للمسابقة',
+        value_1: 'دمج الطاقة المتجددة وIoT والذكاء الاصطناعي في سيناريو واحات قابل للتطبيق.',
+        value_2: 'قابل للتجريب في واحة واحدة ثم التوسع التدريجي في الجزائر.',
+        value_3: 'يمهد لإنشاء مؤسسة ناشئة متخصصة في حلول الواحة الذكية.',
+        pdf: 'تحميل عرض المشروع (PDF)',
+        back: 'العودة للبوابة الرئيسية',
+        footer: '© 2026 SIREP Oasis Lab - نموذج تجريبي لملف مسابقة CEEI / Startup.dz'
+      },
+      fr: {
+        title: 'Plateforme SIREP Oasis Lab',
+        subtitle: 'Prototype d\'oasis intelligente: energie renouvelable et IA',
+        identity: 'Identite du projet',
+        identity_text: 'Plateforme pilote reliant production, stockage et distribution d\'energie vers l\'eau et les services critiques, avec tableau de bord de supervision.',
+        problem: 'Probleme',
+        problem_1: 'Pertes importantes d\'eau et d\'energie dans les oasis faute de supervision.',
+        problem_2: 'Couts d\'exploitation eleves pour pompage, eclairage et refroidissement.',
+        problem_3: 'Decisions difficiles sans donnees terrain en temps reel.',
+        solution: 'Solution proposee',
+        solution_1: 'Deployer un noeud SIREP local (capteurs + controleur + connectivite).',
+        solution_2: 'Tableau web pour l\'etat energie, eau et alertes.',
+        solution_3: 'Algorithme EMS pour piloter les charges prioritaires.',
+        value: 'Valeur pour le concours',
+        value_1: 'Fusion concrete ENR + IoT + IA dans le contexte saharien.',
+        value_2: 'Demarrage sur une oasis puis replication progressive.',
+        value_3: 'Base solide pour une startup specialisee oasis intelligente.',
+        pdf: 'Telecharger la presentation (PDF)',
+        back: 'Retour au portail principal',
+        footer: '© 2026 SIREP Oasis Lab - Dossier pilote CEEI / Startup.dz'
+      },
+      en: {
+        title: 'SIREP Oasis Lab Platform',
+        subtitle: 'Smart oasis prototype powered by renewables and AI',
+        identity: 'Project Snapshot',
+        identity_text: 'A pilot platform that links renewable production, storage, and distribution to water and essential services, with a web monitoring dashboard.',
+        problem: 'Problem',
+        problem_1: 'Major energy and water losses in oases due to limited smart monitoring.',
+        problem_2: 'High operating costs for pumping, lighting, and cooling.',
+        problem_3: 'Difficult decision-making without real-time field data.',
+        solution: 'Proposed Solution',
+        solution_1: 'Deploy a local SIREP node (sensors + controller + connectivity).',
+        solution_2: 'Use a simple web dashboard for energy, water, and alerts.',
+        solution_3: 'Apply an EMS algorithm to schedule priority loads.',
+        value: 'Competition Value',
+        value_1: 'Real integration of renewables, IoT, and AI for oasis operations.',
+        value_2: 'Start with one oasis, then scale to other sites.',
+        value_3: 'Strong foundation for a focused smart-oasis startup.',
+        pdf: 'Download Project Deck (PDF)',
+        back: 'Back to Main Portal',
+        footer: '© 2026 SIREP Oasis Lab - Pilot file for CEEI / Startup.dz'
+      }
+    };
+
+    function setLang(lang) {
+      const data = i18n[lang];
+      if (!data) return;
+
+      document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+      document.querySelectorAll('[data-i18n]').forEach((node) => {
+        const key = node.getAttribute('data-i18n');
+        if (data[key]) node.textContent = data[key];
+      });
+
+      ['ar', 'fr', 'en'].forEach((code) => {
+        const btn = document.getElementById('btn-' + code);
+        if (!btn) return;
+        btn.classList.toggle('active', code === lang);
+      });
+    }
+
+    document.getElementById('btn-ar').addEventListener('click', () => setLang('ar'));
+    document.getElementById('btn-fr').addEventListener('click', () => setLang('fr'));
+    document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
+  </script>
+</body>
+</html>
