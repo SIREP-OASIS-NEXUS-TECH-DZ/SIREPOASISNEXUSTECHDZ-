@@ -48,7 +48,7 @@ Auto-Entrepreneur (2022) → Projet Innovant → Startup → SARL → Scale-up
 - **الاسم**: SIREP OASIS
 
 ### الحماية الدولية
-- **PCT International** — تغطية 6 دول MENA
+- **Extension PCT envisagée** — ciblage 6 pays MENA (non déposée à ce stade)
 - **ترقية مستهدفة**: SARL بعد الحصول على براءة كاملة
 
 ### المشاريع المحمية
@@ -122,9 +122,12 @@ SIREP OASIS 2030
 ║          SIREP OASIS NEXUS TECH DZ                      ║
 ║          NIF: 18503010006316000380                      ║
 ║          NIN: 109850064000630000                        ║
-║          INAPI N° 5893/2025 — Brevet N° 142965          ║
-║          PCT International — 6 pays MENA               ║
+║          INAPI N° 5893/2025 — Brevet en cours d’examen  ║
+║          Extension PCT envisagée (ciblage 6 pays MENA)  ║
 ╚══════════════════════════════════════════════════════════╝
+
+براءة الاختراع الوطنية قيد الدراسة لدى INAPI (رقم الإيداع 5893/2025). لم يتم بعد
+إيداع أي طلب PCT، مع التخطيط مستقبلاً لاستهداف 6 دول من منطقة MENA عبر نظام PCT.
 
 MAHROUG ERRAS BELKACEM
 Fondateur & Auto-Entrepreneur
