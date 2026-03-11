@@ -11,13 +11,21 @@
 </head>
 <body>
 
+<div id="app-loader" class="app-loader" aria-live="polite">
+    <div class="loader-core"></div>
+    <p>Loading SIREP Interface...</p>
+</div>
+
 <nav>
     <a href="#" class="logo">
         <span class="logo-mark" aria-hidden="true">S</span>
         SIREP OASIS NEXUS
     </a>
-    <div class="status-badge">
-        <div class="pulse"></div> 🛰️ LIVE V3.0
+    <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">☀️</button>
+        <div class="status-badge">
+            <div class="pulse"></div> 🛰️ LIVE V3.0
+        </div>
     </div>
 </nav>
 
@@ -38,6 +46,13 @@
     <div class="stat-card"><span class="stat-val">50ha</span><p>مساحة النموذج الحاصل على براءة اختراع</p></div>
     <div class="stat-card"><span class="stat-val">2026</span><p>تاريخ الانطلاق التجاري</p></div>
 </div>
+
+<section class="quick-links" aria-label="Quick navigation">
+    <a href="https://github.com/skacimo1985-star/sirep-amoud/blob/main/SIREP-STRATEGY-PRIVATE.md" target="_blank" rel="noopener noreferrer">Private Strategy</a>
+    <a href="https://github.com/skacimo1985-star/sirep-amoud/blob/main/SIREP-EXECUTIVE-BRIEF.md" target="_blank" rel="noopener noreferrer">Executive Brief</a>
+    <a href="https://github.com/skacimo1985-star/sirep-amoud/blob/main/SIREP-BOARD-BRIEF.md" target="_blank" rel="noopener noreferrer">Board Brief</a>
+    <a href="https://github.com/skacimo1985-star/sirep-amoud/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a>
+</section>
 
 <section id="modules" class="modules-grid">
     <!-- JAI-SIREP -->
@@ -168,6 +183,7 @@
     gsap.from(".hero h1", { opacity: 0, y: 50, duration: 1.2, ease: "power3.out" });
     gsap.from(".stat-card", { opacity: 0, y: 30, stagger: 0.15, duration: 0.8, delay: 0.5 });
     gsap.from(".module-card", { opacity: 0, scale: 0.9, stagger: 0.1, duration: 1, delay: 0.8 });
+    gsap.from(".quick-links a", { opacity: 0, y: 12, stagger: 0.06, duration: 0.55, delay: 0.4 });
 
     // Smooth anchors for module actions
     document.querySelectorAll('a[href^="#"]').forEach((a) => {
@@ -177,6 +193,28 @@
             ev.preventDefault();
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+    });
+
+    // Theme toggle (persisted)
+    const themeToggle = document.getElementById('theme-toggle');
+    const preferred = localStorage.getItem('sirep-theme') || 'dark';
+    if (preferred === 'light') {
+        document.body.classList.add('light-theme');
+        themeToggle.textContent = '🌙';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+        const isLight = document.body.classList.contains('light-theme');
+        themeToggle.textContent = isLight ? '🌙' : '☀️';
+        localStorage.setItem('sirep-theme', isLight ? 'light' : 'dark');
+    });
+
+    // Loader off after first paint
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('app-loader');
+        loader.classList.add('done');
+        setTimeout(() => loader.remove(), 380);
     });
 </script>
 </body>
