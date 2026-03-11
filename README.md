@@ -46,6 +46,7 @@
 - Full declaration: [PROJECT-LEGAL-STATUS.md](./PROJECT-LEGAL-STATUS.md)
 - Public pilot roadmap page: [PILOT-ROADMAP.html](./PILOT-ROADMAP.html)
 - Startup competition page (CEEI): [pages/startup-ceei.html](./pages/startup-ceei.html)
+- Executive/technical brief: [SIREP-NEXUS-EXECUTIVE-TECHNICAL-BRIEF.md](./SIREP-NEXUS-EXECUTIVE-TECHNICAL-BRIEF.md)
 
 ## 🧬 Nexus Framework (WEFEH)
 The project follows the **Water-Energy-Food-Ecosystem-Health (WEFEH)** nexus approach.
