@@ -37,6 +37,8 @@
 Auto-Entrepreneur (2022) → Projet Innovant → Startup → SARL → Scale-up
 ```
 
+الكيان القانوني المعتمد للتحول المؤسسي: **SARL**.
+
 ---
 
 ## 🔬 المادة 3 — الابتكار والملكية الفكرية | Article 3 — Propriété Intellectuelle
@@ -92,7 +94,7 @@ Auto-Entrepreneur (2022) → Projet Innovant → Startup → SARL → Scale-up
 - **قانون 2020** — الإطار العام للمقاولة الذاتية في الجزائر
 
 ### التحول المستقبلي
-- من Auto-Entrepreneur → **SARL** أو **EURL** (بحلول 2026)
+- من Auto-Entrepreneur → **SARL** (بحلول 2026)
 - بعد الحصول على شهادة **براءة INAPI الكاملة**
 - انتهاء الأجل القانوني: **0228 / 2026**
 
@@ -165,7 +167,7 @@ skacimo1985@gmail.com | kacimo2000@gmail.com
 | 1️⃣ تجديد رخصة Auto-Entrepreneur | التوجه للمصلحة الجبائية (DGI) + CNAS | مارس 2026 | ⚠️ مجدول |
 | 2️⃣ استكمال براءة INAPI | متابعة N° 5893/2025 — استلام شهادة كاملة | Q2 2026 | ⏳ قيد التنفيذ |
 | 3️⃣ تقديم ملف Projet Innovant | startup.dz + وزارة المؤسسات الصغيرة | Q2 2026 | ⏳ تحضير |
-| 4️⃣ التحوّل إلى SARL/EURL | كاتب عدل + دفع 100,000 DA رأس مال | Q3 2026 | ⏳ مستقبلي |
+| 4️⃣ التحوّل إلى SARL | كاتب عدل + دفع 100,000 DA رأس مال | Q3 2026 | ⏳ مستقبلي |
 | 5️⃣ طلب Label Startup | وزارة الرقمنة + ANIE + startup.dz | Q3-Q4 2026 | ⏳ مستقبلي |
 | 6️⃣ طلب ASF / Algeria Venture | ملف التمويل بعد الحصول على Label | 2026-2027 | ⏳ مستقبلي |
 

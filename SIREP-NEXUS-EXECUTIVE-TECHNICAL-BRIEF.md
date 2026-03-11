@@ -97,6 +97,7 @@ Phase 3 - Scale and Standardization:
 - Pilot/POC status is clearly disclosed in public communication
 - Legal/IP references are maintained in repository legal documents
 - Metrics are presented as operational indicators, not contractual guarantees
+- Institutional transition model is defined as: Auto-Entrepreneur -> SARL
 
 ## 10. Recommended Immediate Next Step
 Build a pilot technical dossier including:

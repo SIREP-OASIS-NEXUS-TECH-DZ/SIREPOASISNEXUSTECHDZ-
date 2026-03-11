@@ -29,6 +29,7 @@
 
 ## 🏛️ Statut Administratif, Juridique et Opérationnel
 - Le projet est porté par **MAHROUG ERRAS BELKACEM** en tant que fondateur et auto-entrepreneur.
+- Le parcours institutionnel retenu est: **Auto-Entrepreneur → Startup → SARL**.
 - Le cadre de propriété intellectuelle inclut **INAPI Patent N° 5893/2025** et **Brevet N° 142965**, avec une stratégie de protection internationale selon le portefeuille déclaré.
 - Le périmètre foncier annoncé couvre **50 hectares** pour le déploiement progressif du modèle SIREP.
 - Statut actuel: **phase expérimentale (Pilot / POC)** simulant l'étude prévisionnelle du projet avant extension commerciale.
