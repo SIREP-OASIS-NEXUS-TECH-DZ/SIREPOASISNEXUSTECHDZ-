@@ -27,6 +27,25 @@
 - ⚡ **Supervision SCADA** – Monitoring en temps réel des infrastructures.
 - 🌾 **Souveraineté Alimentaire** – Revitalisation des oasis algériennes.
 
+## 🏛️ Statut Administratif, Juridique et Opérationnel
+- Le projet est porté par **MAHROUG ERRAS BELKACEM** en tant que fondateur et auto-entrepreneur.
+- Le cadre de propriété intellectuelle inclut **INAPI Patent N° 5893/2025** et **Brevet N° 142965**, avec une stratégie de protection internationale selon le portefeuille déclaré.
+- Le périmètre foncier annoncé couvre **50 hectares** pour le déploiement progressif du modèle SIREP.
+- Statut actuel: **phase expérimentale (Pilot / POC)** simulant l'étude prévisionnelle du projet avant extension commerciale.
+
+## 📣 Positionnement Marketing & Communication Responsable
+- Communication orientée impact: résilience des oasis, sécurité hydrique, souveraineté alimentaire et inclusion socio-économique.
+- Les indicateurs affichés sur le portail servent à la démonstration technico-fonctionnelle en phase pilote.
+- Les données publiques ne constituent ni offre contractuelle, ni promesse ferme de performance commerciale.
+
+## 💻 Statut Logiciel & Données
+- La plateforme numérique est en **développement actif** avec modules SCADA/IoT et couches d'IA appliquée.
+- Les flux de télémétrie visibles peuvent inclure des données de simulation, d'étalonnage et de validation.
+- Le passage à une exploitation de production sera annoncé après validation technique, réglementaire et opérationnelle.
+
+- Full declaration: [PROJECT-LEGAL-STATUS.md](./PROJECT-LEGAL-STATUS.md)
+- Public pilot roadmap page: [PILOT-ROADMAP.html](./PILOT-ROADMAP.html)
+
 ## 🧬 Nexus Framework (WEFEH)
 The project follows the **Water-Energy-Food-Ecosystem-Health (WEFEH)** nexus approach.
 - [Read WEFEH.md](./WEFEH.md) for the complete framework documentation.
