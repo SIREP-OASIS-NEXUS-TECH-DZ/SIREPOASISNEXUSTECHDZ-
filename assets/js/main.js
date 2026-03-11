@@ -20,7 +20,14 @@
 
 	const state = {
 		timerId: null,
-		charts: {}
+		charts: {},
+		isStreaming: true,
+		lastTickTs: 0,
+		healthScore: 98,
+		samples: {
+			energy: [],
+			water: []
+		}
 	};
 
 	function byId(id) {
@@ -100,6 +107,61 @@
 		chart.update('none');
 	}
 
+	function updateTelemetryBadge(mode) {
+		const pill = byId('telemetry-pill');
+		const text = byId('telemetry-status-text');
+		if (!pill || !text) return;
+
+		pill.classList.remove('is-paused', 'is-alert');
+
+		if (mode === 'paused') {
+			pill.classList.add('is-paused');
+			text.textContent = 'STREAM PAUSED';
+			return;
+		}
+
+		if (mode === 'alert') {
+			pill.classList.add('is-alert');
+			text.textContent = 'ANOMALY WATCH';
+			return;
+		}
+
+		text.textContent = 'SIMULATION LIVE';
+	}
+
+	function updateOpsUI(powerValue, flowValue, latency) {
+		const qualityEl = byId('ops-quality');
+		const latencyEl = byId('ops-latency');
+		const modeEl = byId('ops-mode');
+
+		state.samples.energy.push(powerValue);
+		state.samples.water.push(flowValue);
+		if (state.samples.energy.length > 8) state.samples.energy.shift();
+		if (state.samples.water.length > 8) state.samples.water.shift();
+
+		const outOfBand = powerValue < 61 || powerValue > 74 || flowValue < 122 || flowValue > 148;
+		state.healthScore = Math.max(85, Math.min(99.8, state.healthScore + (outOfBand ? -0.9 : 0.35)));
+
+		if (qualityEl) qualityEl.textContent = formatNumber(state.healthScore);
+		if (latencyEl) latencyEl.textContent = String(Math.max(1, Math.round(latency)));
+		if (modeEl) modeEl.textContent = outOfBand ? 'SIMULATION / WATCH' : 'SIMULATION / STABLE';
+
+		updateTelemetryBadge(outOfBand ? 'alert' : 'live');
+	}
+
+	function setStreamingState(nextState) {
+		state.isStreaming = nextState;
+		const toggle = byId('stream-toggle');
+		if (!toggle) return;
+
+		toggle.textContent = nextState ? 'إيقاف البث' : 'استئناف البث';
+		if (!nextState) {
+			updateTelemetryBadge('paused');
+			const modeEl = byId('ops-mode');
+			if (modeEl) modeEl.textContent = 'PAUSED / MANUAL HOLD';
+		}
+	}
+
 	function startTelemetry() {
 		if (!state.charts.energy && !state.charts.water) return;
 
@@ -107,7 +169,15 @@
 			window.clearInterval(state.timerId);
 		}
 
+		state.lastTickTs = performance.now();
+
 		state.timerId = window.setInterval(() => {
+			if (!state.isStreaming) return;
+
+			const now = performance.now();
+			const latency = now - state.lastTickTs;
+			state.lastTickTs = now;
+
 			const powerValue = randomInRange(CONFIG.energy.min, CONFIG.energy.max);
 			const flowValue = randomInRange(CONFIG.water.min, CONFIG.water.max);
 
@@ -116,7 +186,17 @@
 
 			pushPoint(state.charts.energy, powerValue);
 			pushPoint(state.charts.water, flowValue);
+			updateOpsUI(powerValue, flowValue, latency);
 		}, CONFIG.updateIntervalMs);
+	}
+
+	function setupStreamToggle() {
+		const toggle = byId('stream-toggle');
+		if (!toggle) return;
+
+		toggle.addEventListener('click', () => {
+			setStreamingState(!state.isStreaming);
+		});
 	}
 
 	function setupSmoothAnchors() {
@@ -199,6 +279,8 @@
 		state.charts.energy = createChart('energyChart', CONFIG.energy);
 		state.charts.water = createChart('waterChart', CONFIG.water);
 
+		setupStreamToggle();
+		setStreamingState(true);
 		startTelemetry();
 		setupSmoothAnchors();
 		setupThemeToggle();

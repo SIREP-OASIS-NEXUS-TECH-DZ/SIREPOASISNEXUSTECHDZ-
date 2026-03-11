@@ -1,4 +1,6 @@
 :root {
+  --font-ui: "Cairo", "Segoe UI", Tahoma, sans-serif;
+  --font-display: "Space Grotesk", "Cairo", "Segoe UI", sans-serif;
   --bg-1: #07131b;
   --bg-2: #0c1f2c;
   --panel: #10283a;
@@ -24,7 +26,7 @@ body {
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-family: var(--font-ui);
   direction: rtl;
   color: var(--text);
   background:
@@ -125,6 +127,7 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  font-family: var(--font-display);
   color: var(--text);
   text-decoration: none;
   font-weight: 800;
@@ -155,6 +158,18 @@ nav {
   font-size: 0.82rem;
   font-weight: 700;
   padding: 7px 11px;
+}
+
+.status-badge.is-paused {
+  border-color: rgba(255, 207, 96, 0.58);
+  background: rgba(255, 207, 96, 0.14);
+  color: #fff2c2;
+}
+
+.status-badge.is-alert {
+  border-color: rgba(255, 115, 115, 0.58);
+  background: rgba(255, 115, 115, 0.15);
+  color: #ffe0e0;
 }
 
 .pulse {
@@ -194,6 +209,7 @@ nav {
 }
 
 h1 {
+  font-family: var(--font-display);
   margin: 16px 0 8px;
   font-size: clamp(1.6rem, 3.2vw, 2.45rem);
   line-height: 1.35;
@@ -240,6 +256,52 @@ h1 {
   gap: 12px;
 }
 
+.ops-strip {
+  max-width: 1180px;
+  margin: 10px auto 4px;
+  padding: 0 22px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ops-card {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius);
+  background: rgba(16, 40, 58, 0.86);
+  padding: 12px 14px;
+  min-height: 92px;
+}
+
+.ops-card h4 {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.ops-card p {
+  margin: 0;
+  font-family: var(--font-display);
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.ops-actions {
+  display: grid;
+  place-items: center;
+}
+
+#stream-toggle {
+  width: 100%;
+}
+
+#ops-quality,
+#ops-latency {
+  color: var(--accent);
+}
+
 .quick-links {
   max-width: 1180px;
   margin: 10px auto 4px;
@@ -275,6 +337,7 @@ h1 {
 
 .stat-val {
   display: block;
+  font-family: var(--font-display);
   color: var(--accent);
   font-size: 1.45rem;
   font-weight: 900;
@@ -416,6 +479,10 @@ footer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .ops-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .modules-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -429,6 +496,7 @@ footer {
   nav,
   .hero,
   .stats-grid,
+  .ops-strip,
   .quick-links,
   .modules-grid,
   .scada-section,
@@ -442,6 +510,7 @@ footer {
   }
 
   .stats-grid,
+  .ops-strip,
   .modules-grid {
     grid-template-columns: 1fr;
   }

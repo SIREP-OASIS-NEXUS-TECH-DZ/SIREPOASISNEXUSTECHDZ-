@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIREP Oasis Nexus DZ | Official Enterprise Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -23,8 +26,10 @@
     </a>
     <div class="nav-actions">
         <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">☀️</button>
-        <div class="status-badge">
-            <div class="pulse"></div> 🛰️ LIVE V3.0
+        <div id="telemetry-pill" class="status-badge" aria-live="polite">
+            <div class="pulse"></div>
+            <span>🛰️</span>
+            <span id="telemetry-status-text">SIMULATION LIVE</span>
         </div>
     </div>
 </nav>
@@ -47,6 +52,24 @@
     <div class="stat-card"><span class="stat-val">50ha</span><p>نطاق تغطية أرضي للمشروع (مرحلة تجريبية)</p></div>
     <div class="stat-card"><span class="stat-val">2026</span><p>مرحلة الإطلاق التجريبي والمحاكاة التشغيلية</p></div>
 </div>
+
+<section class="ops-strip" aria-label="Telemetry operations">
+    <article class="ops-card">
+        <h4>نمط التشغيل</h4>
+        <p id="ops-mode">SIMULATION / POC</p>
+    </article>
+    <article class="ops-card">
+        <h4>جودة البيانات</h4>
+        <p><span id="ops-quality">98.0</span>%</p>
+    </article>
+    <article class="ops-card">
+        <h4>زمن الدورة</h4>
+        <p><span id="ops-latency">1500</span> ms</p>
+    </article>
+    <article class="ops-card ops-actions">
+        <button id="stream-toggle" class="btn-launch" type="button">إيقاف البث</button>
+    </article>
+</section>
 
 <section class="quick-links" aria-label="Quick navigation">
     <a href="./pages/startup-ceei.html" target="_blank" rel="noopener noreferrer">Startup CEEI Pitch</a>

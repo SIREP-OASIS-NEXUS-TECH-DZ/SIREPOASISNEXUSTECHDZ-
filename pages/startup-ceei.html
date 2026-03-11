@@ -4,38 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SIREP Oasis Lab | CEEI Startup Pitch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f4f7f9;
+      --bg: #f2f6f8;
       --card: #ffffff;
-      --ink: #111111;
-      --muted: #3a3a3a;
+      --ink: #112131;
+      --muted: #415567;
       --brand: #006233;
-      --accent: #0b3b71;
+      --accent: #0b4569;
       --warm: #ffe066;
-      --ring: 0 2px 10px rgba(0, 0, 0, 0.08);
+      --line: #d3e2eb;
+      --ring: 0 14px 28px rgba(7, 28, 45, 0.08);
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      font-family: "Cairo", "Segoe UI", Tahoma, Arial, sans-serif;
       background: var(--bg);
       color: var(--ink);
+      line-height: 1.65;
     }
 
     header {
       position: relative;
-      background: linear-gradient(135deg, var(--brand), var(--accent));
+      background:
+        radial-gradient(circle at 8% 20%, rgba(255, 255, 255, 0.24), transparent 26%),
+        linear-gradient(135deg, var(--brand), var(--accent));
       color: #fff;
-      padding: 1rem 1.5rem;
+      padding: 1rem 1.5rem 1.3rem;
       text-align: center;
+      border-bottom: 4px solid rgba(255, 255, 255, 0.2);
     }
 
     header h1 {
       margin: 0;
-      font-size: 1.6rem;
+      font-family: "Space Grotesk", "Cairo", sans-serif;
+      font-size: clamp(1.25rem, 2.8vw, 1.8rem);
     }
 
     header p {
@@ -69,14 +78,62 @@
       font-weight: 700;
     }
 
+    .hero-meta {
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .meta-chip {
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 999px;
+      padding: 0.22rem 0.6rem;
+      font-size: 0.78rem;
+      background: rgba(255, 255, 255, 0.14);
+      font-weight: 700;
+    }
+
     main {
       max-width: 920px;
-      margin: 1.5rem auto;
+      margin: 1.2rem auto;
       padding: 0 1rem 2rem;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .kpi {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.8rem;
+      box-shadow: var(--ring);
+      text-align: center;
+    }
+
+    .kpi strong {
+      display: block;
+      font-family: "Space Grotesk", "Cairo", sans-serif;
+      color: var(--accent);
+      font-size: 1.15rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .kpi span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 700;
     }
 
     .card {
       background: var(--card);
+      border: 1px solid var(--line);
       border-radius: 10px;
       padding: 1rem 1.2rem;
       margin-bottom: 1rem;
@@ -88,6 +145,7 @@
       font-size: 1.12rem;
       border-right: 4px solid var(--brand);
       padding-right: 0.45rem;
+      font-family: "Space Grotesk", "Cairo", sans-serif;
     }
 
     .tagline {
@@ -140,6 +198,33 @@
       border: 1px solid var(--accent);
     }
 
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.7rem;
+    }
+
+    .phase {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.75rem;
+      background: #f9fdff;
+    }
+
+    .phase h3 {
+      margin: 0 0 0.3rem;
+      font-size: 0.94rem;
+      color: var(--accent);
+      font-family: "Space Grotesk", "Cairo", sans-serif;
+    }
+
+    .phase p {
+      margin: 0;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
     footer {
       text-align: center;
       font-size: 0.78rem;
@@ -147,9 +232,18 @@
       padding: 1rem 0 1.2rem;
     }
 
+    body[dir="ltr"] .card h2 {
+      border-right: none;
+      border-left: 4px solid var(--brand);
+      padding-right: 0;
+      padding-left: 0.45rem;
+    }
+
     @media (max-width: 700px) {
       header h1 { font-size: 1.3rem; }
       .lang-switch { position: static; justify-content: center; margin-bottom: 0.75rem; }
+      .kpi-grid,
+      .phase-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -162,9 +256,20 @@
     </div>
     <h1 data-i18n="title">منصة SIREP Oasis Lab</h1>
     <p data-i18n="subtitle">نموذج أولي لواحة ذكية بالطاقة المتجددة والذكاء الاصطناعي</p>
+    <div class="hero-meta">
+      <span class="meta-chip">Pilot / POC</span>
+      <span class="meta-chip">WEFEH Nexus</span>
+      <span class="meta-chip" data-i18n="scope_chip">Laghouat - 50ha Scope</span>
+    </div>
   </header>
 
   <main>
+    <section class="kpi-grid" aria-label="Key value indicators">
+      <article class="kpi"><strong>3</strong><span data-i18n="kpi1">محاور تنفيذ</span></article>
+      <article class="kpi"><strong>1</strong><span data-i18n="kpi2">واحة انطلاق</span></article>
+      <article class="kpi"><strong>2026</strong><span data-i18n="kpi3">سنة الإطلاق التجريبي</span></article>
+    </section>
+
     <section class="card">
       <h2><span data-i18n="identity">بطاقة تعريف المشروع</span> <span class="badge">Startup / CEEI</span></h2>
       <p class="tagline" data-i18n="identity_text">
@@ -198,8 +303,22 @@
         <li data-i18n="value_2">قابل للتجريب في واحة واحدة ثم التوسع التدريجي في الجزائر.</li>
         <li data-i18n="value_3">يمهد لإنشاء مؤسسة ناشئة متخصصة في حلول الواحة الذكية.</li>
       </ul>
+      <div class="phase-grid">
+        <article class="phase">
+          <h3 data-i18n="phase1_t">Phase 1 - Instrumentation</h3>
+          <p data-i18n="phase1_d">نشر الحساسات وتجهيز بوابة البيانات المحلية.</p>
+        </article>
+        <article class="phase">
+          <h3 data-i18n="phase2_t">Phase 2 - Optimization</h3>
+          <p data-i18n="phase2_d">تفعيل EMS وتخفيض الفاقد التشغيلي للماء والطاقة.</p>
+        </article>
+        <article class="phase">
+          <h3 data-i18n="phase3_t">Phase 3 - Scaling</h3>
+          <p data-i18n="phase3_d">تكرار النموذج على واحات إضافية عبر نفس المنصة.</p>
+        </article>
+      </div>
       <div class="cta">
-        <a href="#" data-i18n="pdf">تحميل عرض المشروع (PDF)</a>
+        <a href="../README.md" target="_blank" rel="noopener noreferrer" data-i18n="pdf">تحميل عرض المشروع (PDF)</a>
         <a class="secondary" href="../index.html" data-i18n="back">العودة للبوابة الرئيسية</a>
       </div>
     </section>
@@ -228,6 +347,16 @@
         value_1: 'دمج الطاقة المتجددة وIoT والذكاء الاصطناعي في سيناريو واحات قابل للتطبيق.',
         value_2: 'قابل للتجريب في واحة واحدة ثم التوسع التدريجي في الجزائر.',
         value_3: 'يمهد لإنشاء مؤسسة ناشئة متخصصة في حلول الواحة الذكية.',
+        phase1_t: 'المرحلة 1 - القياس الميداني',
+        phase1_d: 'نشر الحساسات وتجهيز بوابة البيانات المحلية.',
+        phase2_t: 'المرحلة 2 - التحسين التشغيلي',
+        phase2_d: 'تفعيل EMS وتخفيض الفاقد التشغيلي للماء والطاقة.',
+        phase3_t: 'المرحلة 3 - التوسعة',
+        phase3_d: 'تكرار النموذج على واحات إضافية عبر نفس المنصة.',
+        scope_chip: 'الأغواط - نطاق 50 هكتار',
+        kpi1: 'محاور تنفيذ',
+        kpi2: 'واحة انطلاق',
+        kpi3: 'سنة الإطلاق التجريبي',
         pdf: 'تحميل عرض المشروع (PDF)',
         back: 'العودة للبوابة الرئيسية',
         footer: '© 2026 SIREP Oasis Lab - نموذج تجريبي لملف مسابقة CEEI / Startup.dz'
@@ -249,6 +378,16 @@
         value_1: 'Fusion concrete ENR + IoT + IA dans le contexte saharien.',
         value_2: 'Demarrage sur une oasis puis replication progressive.',
         value_3: 'Base solide pour une startup specialisee oasis intelligente.',
+        phase1_t: 'Phase 1 - Instrumentation',
+        phase1_d: 'Deployer les capteurs et la passerelle locale de donnees.',
+        phase2_t: 'Phase 2 - Optimisation',
+        phase2_d: 'Activer EMS et reduire les pertes eau/energie.',
+        phase3_t: 'Phase 3 - Extension',
+        phase3_d: 'Replicabilite vers d\'autres oasis avec la meme plateforme.',
+        scope_chip: 'Laghouat - Portee 50 ha',
+        kpi1: 'Axes d\'execution',
+        kpi2: 'Oasis de depart',
+        kpi3: 'Annee pilote',
         pdf: 'Telecharger la presentation (PDF)',
         back: 'Retour au portail principal',
         footer: '© 2026 SIREP Oasis Lab - Dossier pilote CEEI / Startup.dz'
@@ -270,6 +409,16 @@
         value_1: 'Real integration of renewables, IoT, and AI for oasis operations.',
         value_2: 'Start with one oasis, then scale to other sites.',
         value_3: 'Strong foundation for a focused smart-oasis startup.',
+        phase1_t: 'Phase 1 - Instrumentation',
+        phase1_d: 'Deploy sensors and set up a local data gateway.',
+        phase2_t: 'Phase 2 - Optimization',
+        phase2_d: 'Enable EMS and reduce energy/water operational losses.',
+        phase3_t: 'Phase 3 - Scaling',
+        phase3_d: 'Replicate the model to additional oasis sites.',
+        scope_chip: 'Laghouat - 50ha Scope',
+        kpi1: 'Execution pillars',
+        kpi2: 'Initial oasis site',
+        kpi3: 'Pilot launch year',
         pdf: 'Download Project Deck (PDF)',
         back: 'Back to Main Portal',
         footer: '© 2026 SIREP Oasis Lab - Pilot file for CEEI / Startup.dz'
@@ -293,11 +442,16 @@
         if (!btn) return;
         btn.classList.toggle('active', code === lang);
       });
+
+      localStorage.setItem('sirep-startup-lang', lang);
     }
 
     document.getElementById('btn-ar').addEventListener('click', () => setLang('ar'));
     document.getElementById('btn-fr').addEventListener('click', () => setLang('fr'));
     document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
+
+    const defaultLang = localStorage.getItem('sirep-startup-lang') || 'ar';
+    setLang(defaultLang);
   </script>
 </body>
 </html>
