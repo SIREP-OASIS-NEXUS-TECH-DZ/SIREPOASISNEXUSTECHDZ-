@@ -4,6 +4,8 @@
 > **Platform:** Smart Oasis Energy & Water Management Systems — Algeria
 > **Author:** MAHROUG ERRAS BELKACEM
 > **Location:** الأغواط، الجزائر | Laghouat, Algeria
+> **WhatsApp: 0556640211
+>  **TEL: 0674005940 
 > **License:** CC BY-NC-ND 4.0 · INAPI N° 5893/2025 · Brevet N° 142965
 
 ---
