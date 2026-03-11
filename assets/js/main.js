@@ -42,6 +42,23 @@
 		return typeof window.gsap !== 'undefined';
 	}
 
+	function readStorage(key, fallback) {
+		try {
+			const value = localStorage.getItem(key);
+			return value == null ? fallback : value;
+		} catch (_err) {
+			return fallback;
+		}
+	}
+
+	function writeStorage(key, value) {
+		try {
+			localStorage.setItem(key, value);
+		} catch (_err) {
+			// Ignore storage failures in restricted browser contexts.
+		}
+	}
+
 	function formatNumber(value) {
 		return Number(value).toFixed(1);
 	}
@@ -219,7 +236,7 @@
 		const toggle = byId('theme-toggle');
 		if (!toggle) return;
 
-		const preferred = localStorage.getItem('sirep-theme') || 'dark';
+		const preferred = readStorage('sirep-theme', 'dark');
 		if (preferred === 'light') {
 			document.body.classList.add('light-theme');
 			toggle.textContent = '🌙';
@@ -229,7 +246,7 @@
 			document.body.classList.toggle('light-theme');
 			const isLight = document.body.classList.contains('light-theme');
 			toggle.textContent = isLight ? '🌙' : '☀️';
-			localStorage.setItem('sirep-theme', isLight ? 'light' : 'dark');
+			writeStorage('sirep-theme', isLight ? 'light' : 'dark');
 		});
 	}
 
