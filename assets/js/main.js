@@ -17,6 +17,9 @@
 			label: 'Flow'
 		}
 	};
+	Object.freeze(CONFIG);
+	Object.freeze(CONFIG.energy);
+	Object.freeze(CONFIG.water);
 
 	const state = {
 		timerId: null,
@@ -232,6 +235,19 @@
 		});
 	}
 
+	function secureExternalLinks() {
+		const links = document.querySelectorAll('a[target="_blank"]');
+		links.forEach((link) => {
+			const rel = (link.getAttribute('rel') || '').split(/\s+/).filter(Boolean);
+			if (!rel.includes('noopener')) rel.push('noopener');
+			if (!rel.includes('noreferrer')) rel.push('noreferrer');
+			link.setAttribute('rel', rel.join(' '));
+			if (!link.hasAttribute('referrerpolicy')) {
+				link.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+			}
+		});
+	}
+
 	function setupThemeToggle() {
 		const toggle = byId('theme-toggle');
 		if (!toggle) return;
@@ -300,6 +316,7 @@
 		setStreamingState(true);
 		startTelemetry();
 		setupSmoothAnchors();
+		secureExternalLinks();
 		setupThemeToggle();
 		runEntranceAnimations();
 		setupLoader();
