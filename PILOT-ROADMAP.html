@@ -3,8 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>SIREP Pilot Roadmap | خارطة الطريق التجريبية</title>
+  <meta name="description" content="بيان خارطة الطريق التجريبية لمشروع SIREP OASIS NEXUS TECH DZ: الوضع القانوني، مرحلة Pilot/POC، وخطة التوسع المرحلي." />
+
+  <!-- Social / Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SIREP Pilot Roadmap | خارطة الطريق التجريبية" />
+  <meta property="og:description" content="بيان خارطة الطريق التجريبية لمشروع SIREP OASIS NEXUS TECH DZ: الوضع القانوني، مرحلة Pilot/POC، وخطة التوسع المرحلي." />
+  <meta property="og:locale" content="ar_DZ" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="SIREP Pilot Roadmap | خارطة الطريق التجريبية" />
+  <meta name="twitter:description" content="بيان خارطة الطريق التجريبية لمشروع SIREP OASIS NEXUS TECH DZ: الوضع القانوني، مرحلة Pilot/POC، وخطة التوسع المرحلي." />
+
+  <!-- Performance: preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #08131a;
@@ -15,17 +31,39 @@
       --accent: #f0c95e;
       --green: #20b372;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: "Tajawal", sans-serif;
-      background: radial-gradient(circle at 12% 0%, rgba(32, 179, 114, 0.2), transparent 30%),
-                  radial-gradient(circle at 80% 0%, rgba(240, 201, 94, 0.2), transparent 35%),
-                  var(--bg);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(32, 179, 114, 0.2), transparent 30%),
+        radial-gradient(circle at 80% 0%, rgba(240, 201, 94, 0.2), transparent 35%),
+        var(--bg);
       color: var(--text);
       line-height: 1.7;
     }
+
     .container { max-width: 1100px; margin: 0 auto; padding: 0 18px; }
+
+    /* Accessibility: skip link */
+    .skip-link {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(16, 34, 47, 0.98);
+      border: 1px solid var(--line);
+      color: var(--text);
+      text-decoration: none;
+      transform: translateY(-160%);
+      transition: transform 160ms ease;
+      z-index: 100;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
     header {
       position: sticky;
       top: 0;
@@ -34,9 +72,34 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.14);
       backdrop-filter: blur(8px);
     }
-    .nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; gap: 14px; }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 14px;
+    }
+
     .brand { font-weight: 800; }
-    .back { color: var(--accent); text-decoration: none; font-weight: 700; }
+
+    .back {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+
+    /* Better keyboard focus */
+    :where(a, button, input, textarea, select):focus-visible {
+      outline: 3px solid rgba(240, 201, 94, 0.8);
+      outline-offset: 3px;
+    }
+
+    .back:hover {
+      background: rgba(240, 201, 94, 0.14);
+    }
 
     section { padding: 38px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
     h1 { margin: 0 0 10px; font-size: 2rem; }
@@ -56,15 +119,18 @@
       gap: 10px;
       margin-top: 14px;
     }
+
     .kpi {
       background: rgba(0, 0, 0, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 10px;
       padding: 10px;
     }
+
     .kpi strong { display: block; font-size: 1.2rem; color: var(--accent); }
 
     .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+
     ul { margin: 0; padding-inline-start: 18px; }
     li { margin-bottom: 6px; }
 
@@ -84,9 +150,16 @@
       .grid { grid-template-columns: 1fr; }
       h1 { font-size: 1.55rem; }
     }
+
+    /* Extra small screens */
+    @media (max-width: 480px) {
+      .kpis { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">تخطي إلى المحتوى</a>
+
   <header>
     <div class="container nav">
       <div class="brand">SIREP OASIS NEXUS TECH DZ</div>
@@ -94,7 +167,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main id="main" class="container" tabindex="-1">
     <section>
       <div class="hero-card">
         <h1>خارطة الطريق التجريبية: من الأغواط إلى التوسع المرحلي</h1>
