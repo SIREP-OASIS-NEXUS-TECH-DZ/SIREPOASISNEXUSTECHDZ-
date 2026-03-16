@@ -4,8 +4,8 @@
 ---
 
 > **وثيقة تأسيسية رسمية | Document Constitutif Officiel**  
-> تاريخ التسجيل: 22/23 – 18 مارس 2022  
-> Date d'enregistrement: 18 Mars 2022
+> تاريخ التسجيل: 22/23 – 01 مارس 2026  
+> Date d'enregistrement: 01 Mars 2026
 
 ---
 
