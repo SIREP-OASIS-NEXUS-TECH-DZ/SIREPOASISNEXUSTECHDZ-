@@ -23,6 +23,67 @@
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
+<!-- SIREP Bot Disclaimer Styles v2.0 -->
+<style>
+/* ---- Bot Disclaimer Card ---- */
+.sirep-disclaimer {
+    font-size: 0.88rem;
+    color: #cdd9e5;
+    margin-top: 1rem;
+    border: 1px solid rgba(245,158,11,0.22);
+    border-radius: 8px;
+    background: rgba(245,158,11,0.04);
+    padding: .7rem 1rem;
+    line-height: 1.55;
+    text-align: right;
+}
+.sirep-disclaimer .ar-block { direction: rtl; text-align: right; margin-bottom: .55rem; }
+.sirep-disclaimer .en-block { direction: ltr; text-align: left; }
+.sirep-disclaimer .law-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    background: rgba(245,158,11,0.15);
+    color: #f59e0b;
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin: 0 2px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.sirep-disclaimer a { color: #f59e0b; text-decoration: underline; }
+.sirep-disclaimer .disc-hr {
+    border: none;
+    border-top: 1px solid rgba(245,158,11,0.15);
+    margin: .55rem 0;
+}
+.sirep-disclaimer .consent-row {
+    margin-top: .55rem;
+    padding-top: .45rem;
+    border-top: 1px solid rgba(245,158,11,0.1);
+    font-size: 0.82rem;
+    color: #aab;
+    direction: ltr;
+    text-align: left;
+}
+.sirep-disclaimer .consent-row input[type="checkbox"] {
+    margin: 0 5px;
+    cursor: pointer;
+    accent-color: #f59e0b;
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+}
+#bot-mizan-card .btn-launch[aria-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+#bot-mizan-card .btn-launch:not([aria-disabled]) {
+    pointer-events: auto;
+    opacity: 1;
+    cursor: pointer;
+}
+</style>
 </head>
 <body>
 
@@ -84,6 +145,7 @@
 </section>
 
 <section class="quick-links" aria-label="Quick navigation">
+    <a href="#bot-mizan-card">⚖️ بوت الميزان الذكي</a>
     <a href="./pages/startup-ceei.html" target="_blank" rel="noopener noreferrer">Startup CEEI Pitch</a>
     <a href="./PILOT-ROADMAP.html" target="_blank" rel="noopener noreferrer">Pilot Roadmap</a>
     <a href="https://github.com/skacimo1985-star/sirep-amoud/blob/main/PROJECT-LEGAL-STATUS.md" target="_blank" rel="noopener noreferrer">Legal & Pilot Status</a>
@@ -93,6 +155,77 @@
 </section>
 
 <section id="modules" class="modules-grid">
+    <!-- ============================================================
+         بوت الميزان الذكي — SIREP Smart Legal Bot Section
+         n8n Agent: https://sirepoasisnexustechdz.app.n8n.cloud
+         Legal basis: Law 18-07 | GDPR Art.13 | UN AI Guidelines
+         Version: 2.0 | Date: 2026-03-18
+         ============================================================ -->
+
+    <!-- قسم بوت الميزان الذكي -->
+    <div class="module-card" id="bot-mizan-card" style="border-color:#f59e0b; grid-column: 1 / -1;">
+        <div class="module-icon" style="color:#f59e0b;"><i class="fas fa-balance-scale"></i></div>
+        <h3>⚖️ بوت الميزان الذكي <span style="font-size:0.7em;color:#f59e0b;">| Smart Legal Bot</span></h3>
+        <p>مساعد ذكي للبحث القانوني ومعالجة الاستفسارات القانونية والإدارية وفق المنظومة التشريعية الجزائرية — مدعوم بـ n8n Workflow Agents.</p>
+        <div class="badge-row">
+            <span class="badge">n8n AI Agent</span>
+            <span class="badge">القانون 18-07</span>
+            <span class="badge">GDPR</span>
+            <span class="badge">Legal Research</span>
+        </div>
+
+        <!-- Disclaimer ثنائي اللغة -->
+        <div class="sirep-disclaimer" id="sirep-bot-disclaimer" role="note" aria-label="تنبيه البوت القانوني / Legal Bot Disclaimer">
+            <div class="ar-block">
+                <strong>⚖️ تنبيه هام — بوت الميزان الذكي:</strong>
+                هذا البوت أداة مساعِدة في <em>البحث القانوني وتوليد المسودات الأولية</em> فحسب، ولا يُعدّ في أي حال استشارةً قانونية أو قضائية مُلزِمة. يُرجى التواصل مع محامٍ معتمد لأي قرار قانوني.<br>
+                <small>
+                    تتم معالجة بياناتك بموجب:
+                    <span class="law-badge">القانون الجزائري 18-07</span>
+                    <span class="law-badge">GDPR المادة 13</span>
+                    <span class="law-badge">توجيهات UN للذكاء الاصطناعي</span><br>
+                    يُرجى عدم إدراج بيانات شخصية حساسة. للتفاصيل:
+                    <a href="https://legal-algeria-hub.replit.app/" target="_blank" rel="noopener noreferrer">legal-algeria-hub.replit.app</a>
+                </small>
+            </div>
+            <hr class="disc-hr">
+            <div class="en-block">
+                <strong>⚖️ Important Notice — Smart Mizan Bot:</strong>
+                This bot is a <em>legal research and preliminary drafting assistant</em> only. It does not constitute binding legal or judicial advice. Please consult a qualified lawyer for any legal decision.<br>
+                <small>
+                    Your data is processed under:
+                    <span class="law-badge">Algerian Law 18-07</span>
+                    <span class="law-badge">GDPR Art. 13</span>
+                    <span class="law-badge">UN AI Guidelines</span><br>
+                    Please do not share sensitive personal data. Details:
+                    <a href="https://legal-algeria-hub.replit.app/" target="_blank" rel="noopener noreferrer">legal-algeria-hub.replit.app</a>
+                </small>
+            </div>
+            <div class="consent-row" id="sirep-consent-row">
+                <label>
+                    <input type="checkbox" id="sirep-consent-check">
+                    <strong>أوافق على الشروط</strong> وأفهم طبيعة هذا البوت &nbsp;/&nbsp;
+                    I <strong>agree</strong> to the above terms and understand the bot's nature.
+                </label>
+            </div>
+        </div>
+
+        <!-- زر الوصول للبوت -->
+        <div style="margin-top:1rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+            <a id="bot-launch-btn"
+               href="https://sirepoasisnexustechdz.app.n8n.cloud/home/chat/workflow-agents"
+               target="_blank" rel="noopener noreferrer"
+               class="btn-launch module-action"
+               style="pointer-events:none; opacity:0.45; cursor:not-allowed;"
+               aria-disabled="true">
+               🤖 تشغيل بوت الميزان / Launch Bot
+            </a>
+            <a href="https://legal-algeria-hub.replit.app/" target="_blank" rel="noopener noreferrer"
+               class="btn-launch module-action" style="background:rgba(245,158,11,0.15);color:#f59e0b;border:1px solid #f59e0b;">
+               📄 سياسة الخصوصية / Privacy Policy
+            </a>
+        </div>
+    </div>
     <!-- JAI-SIREP -->
     <div class="module-card">
         <div class="module-icon"><i class="fas fa-microchip"></i></div>
