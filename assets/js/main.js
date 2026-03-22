@@ -308,6 +308,33 @@
 		});
 	}
 
+	function setupBotConsentGate() {
+		var btn = byId('bot-launch-btn');
+		var cb = byId('sirep-consent-check');
+		if (!cb || !btn) return;
+
+		function applyConsent(checked) {
+			if (checked) {
+				btn.style.pointerEvents = 'auto';
+				btn.style.opacity = '1';
+				btn.style.cursor = 'pointer';
+				btn.removeAttribute('aria-disabled');
+			} else {
+				btn.style.pointerEvents = 'none';
+				btn.style.opacity = '0.45';
+				btn.style.cursor = 'not-allowed';
+				btn.setAttribute('aria-disabled', 'true');
+			}
+		}
+
+		cb.addEventListener('change', function () {
+			applyConsent(cb.checked);
+		});
+
+		// Initialize — bot locked until consent is given
+		applyConsent(cb.checked);
+	}
+
 	function init() {
 		state.charts.energy = createChart('energyChart', CONFIG.energy);
 		state.charts.water = createChart('waterChart', CONFIG.water);
@@ -320,6 +347,7 @@
 		setupThemeToggle();
 		runEntranceAnimations();
 		setupLoader();
+		setupBotConsentGate();
 	}
 
 	if (document.readyState === 'loading') {
