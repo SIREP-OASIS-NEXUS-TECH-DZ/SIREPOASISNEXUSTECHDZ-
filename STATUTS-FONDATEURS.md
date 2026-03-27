@@ -1,5 +1,5 @@
 # 📜 القانون الأساسي | Statuts Fondateurs
-# SIREP OASIS NEXUS TECH DZ
+# SIREP OASIS NEXUS WEFEH TECH DZ
 
 ---
 
@@ -13,7 +13,7 @@
 
 | المعلومات | البيانات |
 |-----------|----------|
-| **الاسم التجاري** | SIREP OASIS NEXUS TECH DZ |
+| **الاسم التجاري** | SIREP OASIS NEXUS WEFEH TECH DZ |
 | **المؤسس** | MAHROUG ERRAS BELKACEM |
 | **تاريخ الميلاد** | 06/01/1985 |
 | **NIN** | 109850064000630000 |
@@ -121,7 +121,7 @@ SIREP OASIS 2030
 
 ```
 ╔══════════════════════════════════════════════════════════╗
-║          SIREP OASIS NEXUS TECH DZ                      ║
+║          SIREP OASIS NEXUS WEFEH TECH DZ                      ║
 ║          NIF: 18503010006316000380                      ║
 ║          NIN: 109850064000630000                        ║
 ║          INAPI N° 5893/2025 — Brevet en cours d’examen  ║
@@ -133,7 +133,7 @@ SIREP OASIS 2030
 
 MAHROUG ERRAS BELKACEM
 Fondateur & Auto-Entrepreneur
-SIREP OASIS NEXUS TECH DZ
+SIREP OASIS NEXUS WEFEH TECH DZ
 
 skacimo1985@gmail.com | kacimo2000@gmail.com
 +213 556 64 02 11 | +213 674 00 59 40
@@ -144,9 +144,9 @@ skacimo1985@gmail.com | kacimo2000@gmail.com
 ## 🔒 حقوق الملكية | Droits Réservés
 
 ```
-© 2026 SIREP OASIS NEXUS TECH DZ — All Rights Reserved
-© 2026 SIREP OASIS NEXUS TECH DZ — Tous droits réservés
-© 2026 SIREP OASIS NEXUS TECH DZ — جميع الحقوق محفوظة
+© 2026 SIREP OASIS NEXUS WEFEH TECH DZ — All Rights Reserved
+© 2026 SIREP OASIS NEXUS WEFEH TECH DZ — Tous droits réservés
+© 2026 SIREP OASIS NEXUS WEFEH TECH DZ — جميع الحقوق محفوظة
 ```
 
 > **تاريخ التوثيق على GitHub**: 01 Mars 2026  
