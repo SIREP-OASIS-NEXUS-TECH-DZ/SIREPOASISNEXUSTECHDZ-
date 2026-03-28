@@ -1,4 +1,4 @@
-# SIREP OASIS NEXUS-DZ - Executive and Technical Brief
+# SIREP OASIS NEXUS WEFEH-DZ - Executive and Technical Brief
 
 ## 1. Strategic Objective
 The project "SIREP OASIS NEXUS-DZ" aims to reduce water and energy consumption while improving service reliability in oasis, tourism, and commercial facilities through an integrated smart infrastructure.
