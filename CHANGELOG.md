@@ -18,6 +18,30 @@ EN:
 AR:
 - مواصلة التحضير للإطلاق التجريبي في المنطقة الاقتصادية الخاصة (ZES) وتعزيز الجاهزية التقنية للإنتاج.
 
+## [v1.2.0] - 2026-04-01
+
+Release type | نوع الإصدار: `MINOR`
+
+### Added | مضاف
+
+EN:
+- Initiated Phase 1 ZES readiness activities: governance scope confirmation and legal deployment constraint review.
+- Published integration checklist draft for network, power, and data retention requirements.
+- Added CHANGELOG entries tracking ZES milestone progress against Q2 2026 targets.
+
+AR:
+- بدء أنشطة الجاهزية في المرحلة 1 من المنطقة الاقتصادية الخاصة (ZES): تأكيد نطاق الحوكمة ومراجعة القيود القانونية للنشر.
+- نشر مسودة قائمة التكامل لمتطلبات الشبكة والطاقة والاحتفاظ بالبيانات.
+- إضافة إدخالات CHANGELOG لتتبع تقدم معالم المنطقة الاقتصادية الخاصة (ZES) مقارنة بأهداف الربع الثاني 2026.
+
+### Changed | تعديلات
+
+EN:
+- Updated ZES milestone status: governance and legal validation progressed from Planned to In Progress.
+
+AR:
+- تحديث حالة معلم ZES: انتقلت مرحلة التحقق الحوكمي والقانوني من "مخطط" إلى "قيد التنفيذ".
+
 ## [v1.1.0] - 2026-03-11
 
 Release type | نوع الإصدار: `MINOR`
@@ -117,7 +141,7 @@ AR:
 EN:
 | Milestone | Target Date | Priority | Status |
 |---|---|---|---|
-| Governance and legal validation complete | 2026-04-15 | High | Planned |
+| Governance and legal validation complete | 2026-04-15 | High | In Progress |
 | Sensor and gateway onboarding complete | 2026-05-30 | High | Planned |
 | API and dashboard pilot go-live | 2026-06-20 | High | Planned |
 | KPI review and stabilization sign-off | 2026-08-15 | Medium | Planned |
@@ -126,7 +150,7 @@ EN:
 AR:
 | المعلم | التاريخ المستهدف | الأولوية | الحالة |
 |---|---|---|---|
-| اكتمال التحقق الحوكمي والقانوني | 2026-04-15 | عالية | مخطط |
+| اكتمال التحقق الحوكمي والقانوني | 2026-04-15 | عالية | قيد التنفيذ |
 | اكتمال إدماج الحساسات والبوابات | 2026-05-30 | عالية | مخطط |
 | الإطلاق التجريبي للـ API واللوحة | 2026-06-20 | عالية | مخطط |
 | اعتماد مراجعة المؤشرات والتثبيت | 2026-08-15 | متوسطة | مخطط |
