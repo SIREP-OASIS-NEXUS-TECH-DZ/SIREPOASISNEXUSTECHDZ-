@@ -143,6 +143,10 @@
         <h4>زمن الدورة</h4>
         <p><span id="ops-latency">1500</span> ms</p>
     </article>
+    <article class="ops-card">
+        <h4>مؤشر الشذوذ AI</h4>
+        <p><span id="ops-anomaly">0.0</span> / 100</p>
+    </article>
     <article class="ops-card ops-actions">
         <button id="stream-toggle" class="btn-launch" type="button">إيقاف البث</button>
     </article>
@@ -292,6 +296,16 @@
             <h3 style="margin-bottom: 20px; color: #3b82f6;"><i class="fas fa-tint"></i> SMART WATER FLOW (L/S)</h3>
             <div class="chart-container"><canvas id="waterChart"></canvas></div>
             <p style="margin-top: 15px; text-align: center; font-weight: 800;">التدفق الحالي: <span id="val-flow" style="color:#3b82f6">140.0</span> L/s</p>
+        </div>
+        <div class="chart-box">
+            <h3 style="margin-bottom: 20px; color: #c2985b;"><i class="fas fa-seedling"></i> SOIL MOISTURE (%)</h3>
+            <div class="chart-container"><canvas id="soilChart"></canvas></div>
+            <p style="margin-top: 15px; text-align: center; font-weight: 800;">رطوبة التربة: <span id="val-soil" style="color:#c2985b">50.0</span> %</p>
+        </div>
+        <div class="chart-box">
+            <h3 style="margin-bottom: 20px; color: #f97316;"><i class="fas fa-thermometer-half"></i> AMBIENT TEMP (°C)</h3>
+            <div class="chart-container"><canvas id="tempChart"></canvas></div>
+            <p style="margin-top: 15px; text-align: center; font-weight: 800;">درجة الحرارة: <span id="val-temp" style="color:#f97316">35.0</span> °C</p>
         </div>
     </div>
 </section>

@@ -18,6 +18,32 @@ EN:
 AR:
 - مواصلة التحضير للإطلاق التجريبي في المنطقة الاقتصادية الخاصة (ZES) وتعزيز الجاهزية التقنية للإنتاج.
 
+## [v1.3.0] - 2026-04-09
+
+Release type | نوع الإصدار: `MINOR`
+
+### Added | مضاف
+
+EN:
+- Upgraded IoT firmware to v2.0: complete ESP32 implementation for all 5 WEFEH sensor fields (soil moisture, solar output, crop height, ambient temperature, humidity) plus a 6th field for edge-computed AI anomaly score.
+- Added calibration constants and exponential smoothing for all sensor readings in firmware.
+- Added `computeAnomalyScore` edge heuristic in firmware mirroring the frontend analytics logic.
+- Added two new live telemetry charts to the dashboard: Soil Moisture (%) and Ambient Temperature (°C).
+- Added AI Anomaly Score ops card to the telemetry strip for real-time anomaly visibility.
+- Added `computeAnomalyScore` function to `main.js` for client-side anomaly analytics aligned with firmware.
+- Updated ThingSpeak channel to include Field 6 (AI Anomaly Score 0–100).
+- Added sensor prerequisite list and analytics threshold reference table to `IoT_THING_SPEAK.md`.
+
+AR:
+- ترقية البرنامج الثابت IoT إلى الإصدار v2.0: تطبيق كامل على ESP32 لجميع حقول مستشعرات WEFEH الخمسة (رطوبة التربة، إخراج الطاقة الشمسية، ارتفاع المحصول، درجة الحرارة المحيطة، الرطوبة) بالإضافة إلى حقل سادس لدرجة الشذوذ بالذكاء الاصطناعي محسوبة على الحافة.
+- إضافة ثوابت المعايرة والتمهيد الأسي لجميع قراءات المستشعرات في البرنامج الثابت.
+- إضافة دالة `computeAnomalyScore` على حافة البرنامج الثابت مطابقة لمنطق التحليلات في الواجهة الأمامية.
+- إضافة مخططين مباشرين جديدين للقياسات عن بُعد في لوحة التحكم: رطوبة التربة (%) ودرجة الحرارة المحيطة (°C).
+- إضافة بطاقة مؤشر الشذوذ بالذكاء الاصطناعي في شريط العمليات لرؤية الشذوذ في الوقت الفعلي.
+- إضافة دالة `computeAnomalyScore` إلى `main.js` لتحليلات الشذوذ على جانب العميل متوافقة مع البرنامج الثابت.
+- تحديث قناة ThingSpeak لتشمل الحقل السادس (درجة الشذوذ بالذكاء الاصطناعي 0-100).
+- إضافة قائمة متطلبات المستشعرات وجدول مرجعي لعتبات التحليلات إلى `IoT_THING_SPEAK.md`.
+
 ## [v1.2.0] - 2026-04-01
 
 Release type | نوع الإصدار: `MINOR`
