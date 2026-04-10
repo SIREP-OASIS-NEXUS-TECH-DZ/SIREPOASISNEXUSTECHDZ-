@@ -15,11 +15,25 @@
 			max: 150,
 			color: '#3b82f6',
 			label: 'Flow'
+		},
+		soil: {
+			min: 38,
+			max: 62,
+			color: '#c2985b',
+			label: 'Soil Moisture'
+		},
+		temp: {
+			min: 28,
+			max: 42,
+			color: '#f97316',
+			label: 'Temp °C'
 		}
 	};
 	Object.freeze(CONFIG);
 	Object.freeze(CONFIG.energy);
 	Object.freeze(CONFIG.water);
+	Object.freeze(CONFIG.soil);
+	Object.freeze(CONFIG.temp);
 
 	const state = {
 		timerId: null,
@@ -27,9 +41,12 @@
 		isStreaming: true,
 		lastTickTs: 0,
 		healthScore: 98,
+		anomalyScore: 0,
 		samples: {
 			energy: [],
-			water: []
+			water: [],
+			soil: [],
+			temp: []
 		}
 	};
 
@@ -149,22 +166,59 @@
 		text.textContent = 'SIMULATION LIVE';
 	}
 
-	function updateOpsUI(powerValue, flowValue, latency) {
+	// Anomaly score thresholds — mirror the firmware heuristic in IoT_THING_SPEAK.md.
+	// Power threshold is in kW (CSP aggregate) whereas firmware uses W (individual panel).
+	const ANOMALY = Object.freeze({
+		soilLow:         30,   soilLowPenalty:  1.2,
+		soilHigh:        70,   soilHighPenalty: 0.8,
+		powerLowKw:      61,   powerLowPenalty: 15,
+		tempHigh:        45,   tempHighPenalty: 2,
+		tempLow:          5,   tempLowPenalty:  3
+	});
+
+	/**
+	 * Compute an edge-side anomaly score (0–100).
+	 * Heuristic mirrors the firmware logic in IoT_THING_SPEAK.md.
+	 * Note: powerW here is the CSP aggregate output in kW (60–75 kW range),
+	 * whereas the firmware measures individual panel output in Watts; thresholds
+	 * are scaled accordingly.
+	 */
+	function computeAnomalyScore(powerW, soilPct, tempC) {
+		let score = 0;
+		if (soilPct < ANOMALY.soilLow)  score += (ANOMALY.soilLow  - soilPct) * ANOMALY.soilLowPenalty;
+		if (soilPct > ANOMALY.soilHigh) score += (soilPct - ANOMALY.soilHigh) * ANOMALY.soilHighPenalty;
+		if (powerW  < ANOMALY.powerLowKw) score += ANOMALY.powerLowPenalty;
+		if (tempC   > ANOMALY.tempHigh) score += (tempC   - ANOMALY.tempHigh) * ANOMALY.tempHighPenalty;
+		if (tempC   < ANOMALY.tempLow)  score += (ANOMALY.tempLow  - tempC)   * ANOMALY.tempLowPenalty;
+		return Math.min(Math.max(score, 0), 100);
+	}
+
+	function updateOpsUI(powerValue, flowValue, soilValue, tempValue, latency) {
 		const qualityEl = byId('ops-quality');
 		const latencyEl = byId('ops-latency');
 		const modeEl = byId('ops-mode');
+		const anomalyEl = byId('ops-anomaly');
 
 		state.samples.energy.push(powerValue);
 		state.samples.water.push(flowValue);
+		state.samples.soil.push(soilValue);
+		state.samples.temp.push(tempValue);
 		if (state.samples.energy.length > 8) state.samples.energy.shift();
 		if (state.samples.water.length > 8) state.samples.water.shift();
+		if (state.samples.soil.length > 8) state.samples.soil.shift();
+		if (state.samples.temp.length > 8) state.samples.temp.shift();
 
 		const outOfBand = powerValue < 61 || powerValue > 74 || flowValue < 122 || flowValue > 148;
 		state.healthScore = Math.max(85, Math.min(99.8, state.healthScore + (outOfBand ? -0.9 : 0.35)));
 
+		const rawAnomaly = computeAnomalyScore(powerValue, soilValue, tempValue);
+		// Exponential smoothing (α = 0.3) to reduce jitter
+		state.anomalyScore = 0.3 * rawAnomaly + 0.7 * state.anomalyScore;
+
 		if (qualityEl) qualityEl.textContent = formatNumber(state.healthScore);
 		if (latencyEl) latencyEl.textContent = String(Math.max(1, Math.round(latency)));
 		if (modeEl) modeEl.textContent = outOfBand ? 'SIMULATION / WATCH' : 'SIMULATION / STABLE';
+		if (anomalyEl) anomalyEl.textContent = formatNumber(state.anomalyScore);
 
 		updateTelemetryBadge(outOfBand ? 'alert' : 'live');
 	}
@@ -199,14 +253,20 @@
 			state.lastTickTs = now;
 
 			const powerValue = randomInRange(CONFIG.energy.min, CONFIG.energy.max);
-			const flowValue = randomInRange(CONFIG.water.min, CONFIG.water.max);
+			const flowValue  = randomInRange(CONFIG.water.min, CONFIG.water.max);
+			const soilValue  = randomInRange(CONFIG.soil.min, CONFIG.soil.max);
+			const tempValue  = randomInRange(CONFIG.temp.min, CONFIG.temp.max);
 
 			updateValue('val-pwr', powerValue);
 			updateValue('val-flow', flowValue);
+			updateValue('val-soil', soilValue);
+			updateValue('val-temp', tempValue);
 
 			pushPoint(state.charts.energy, powerValue);
 			pushPoint(state.charts.water, flowValue);
-			updateOpsUI(powerValue, flowValue, latency);
+			pushPoint(state.charts.soil, soilValue);
+			pushPoint(state.charts.temp, tempValue);
+			updateOpsUI(powerValue, flowValue, soilValue, tempValue, latency);
 		}, CONFIG.updateIntervalMs);
 	}
 
@@ -337,7 +397,9 @@
 
 	function init() {
 		state.charts.energy = createChart('energyChart', CONFIG.energy);
-		state.charts.water = createChart('waterChart', CONFIG.water);
+		state.charts.water  = createChart('waterChart', CONFIG.water);
+		state.charts.soil   = createChart('soilChart', CONFIG.soil);
+		state.charts.temp   = createChart('tempChart', CONFIG.temp);
 
 		setupStreamToggle();
 		setStreamingState(true);
@@ -356,3 +418,4 @@
 		init();
 	}
 })();
+
