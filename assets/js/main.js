@@ -395,6 +395,35 @@
 		applyConsent(cb.checked);
 	}
 
+	function initRatingSummary() {
+		const rows = document.querySelectorAll('#rating-bars .rating-bar-row');
+		if (!rows.length) return;
+
+		let total = 0;
+		let weightedSum = 0;
+		let maxCount = 0;
+
+		rows.forEach((row) => {
+			const count = parseInt(row.dataset.count, 10);
+			const stars = parseInt(row.dataset.stars, 10);
+			total += count;
+			weightedSum += count * stars;
+			if (count > maxCount) maxCount = count;
+		});
+
+		const avgEl = byId('avg-rating');
+		const totalEl = byId('total-reviews');
+		if (avgEl) avgEl.textContent = total > 0 ? (weightedSum / total).toFixed(1) : '0.0';
+		if (totalEl) totalEl.textContent = String(total);
+
+		rows.forEach((row) => {
+			const count = parseInt(row.dataset.count, 10);
+			const pct = maxCount > 0 ? ((count / maxCount) * 100).toFixed(1) : 0;
+			const fill = row.querySelector('.rating-bar-fill');
+			if (fill) fill.style.width = pct + '%';
+		});
+	}
+
 	function init() {
 		state.charts.energy = createChart('energyChart', CONFIG.energy);
 		state.charts.water  = createChart('waterChart', CONFIG.water);
@@ -410,6 +439,7 @@
 		runEntranceAnimations();
 		setupLoader();
 		setupBotConsentGate();
+		initRatingSummary();
 	}
 
 	if (document.readyState === 'loading') {
