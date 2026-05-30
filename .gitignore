@@ -1,2 +1,46 @@
-node_modules/
+# بيانات حساسة | Sensitive Data
 .env
+.env.local
+.env.*.local
+.env.*.production.local
+
+# مفاتيح سرية | Secrets & Keys
+*.key
+*.pem
+.ssh/
+secrets/
+private/
+
+# بيانات اعتماد | Credentials
+credentials.json
+credentials.js
+config.secret.js
+apikeys.json
+
+# ملفات النظام | System Files
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+
+# ملفات المشروع المؤقتة | Temp Project Files
+node_modules/
+dist/
+build/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ThingSpeak API Keys | مفاتيح API
+config/thingspeak.config.js
+*.thingspeak.key
+
+# ملفات الاختبار المحلي | Local Test Files
+test-data/
+*.test.local.js
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
